@@ -5,19 +5,13 @@ using UnityEngine;
 
 public class PlayerKiller : MonoBehaviour
 {
-    private GhostSpawner spawner;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        PositionRecorder positionRecorder = other.GetComponent<PositionRecorder>();
-        if (positionRecorder != null)
+        PositionRecorder player = other.GetComponent<PositionRecorder>();
+        if (player != null)
         {
-            positionRecorder.ReturnToStartPosition(); //send player to start
-            spawner.ResetGhosts();
+            GameRoundController.Instance.PlayerDied();
+            player.gameObject.SetActive(false);
         }
-    }
-
-    public void setSpawner(GhostSpawner s)
-    {
-        spawner = s;
     }
 }
