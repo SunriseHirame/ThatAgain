@@ -46,9 +46,7 @@ namespace Game
                 jumpInput ? jumpHeight * dt : -0.02f
                 ); 
             
-            var surfaceInfo = surfaceCheck.CheckCollisions (ref frameVelocity);
-            print (frameVelocity);
-            
+            var surfaceInfo = surfaceCheck.CheckCollisions (ref frameVelocity);            
             attachedRigidbody.MovePosition (attachedRigidbody.position + frameVelocity);
         }
 
