@@ -60,7 +60,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Game\Scripts\Controller\KinematicController.cs" />
+    <Compile Include="Assets\_Game\Scripts\Controller\SurfaceChecker.cs" />
+    <Compile Include="Assets\_Game\Scripts\Vector3Extensions.cs" />
     <None Include="Assets\_Game\Scripts\Game.Runtime.asmdef" />
+    <Reference Include="Unity.Mathematics">
+      <HintPath>D:/GitHub/ThatAgain/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Unity Versions/2019.1.0f2/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
     </Reference>
