@@ -36,7 +36,7 @@ public class GhostSpawner : MonoBehaviour
         PositionPlayback spawnedPlayback = spawnedGhost.GetComponent<PositionPlayback>();
         spawnedPlayback.SetPositionHistory(positionHistory);
         ghosts.Add(spawnedPlayback); //add playback to list of all playbacks for resetting.
-        spawnedGhost.SetActive(false); //keep new ghost disabled until reset
+        
     }
 
     public void ResetGhosts()

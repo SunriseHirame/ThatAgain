@@ -8,6 +8,11 @@ public class PositionPlayback : MonoBehaviour
     private Vector3[] positionHistory;
     private int positionIter;
 
+    private void Start()
+    {
+        gameObject.SetActive(false); //keep new ghost disabled until reset
+    }
+
     public void SetPositionHistory(Vector3[] history)
     {
         positionHistory = history;
