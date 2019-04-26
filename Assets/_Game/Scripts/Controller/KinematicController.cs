@@ -8,7 +8,7 @@ namespace Game
         private float speed = 3;
 
         [SerializeField]
-        private float jumpHeight = 5;
+        internal float jumpHeight = 5;
 
         [SerializeField]
         private float gravity = 20;
@@ -31,14 +31,13 @@ namespace Game
             inputConsumed = false;
             
             inputX = Input.GetAxisRaw ("Horizontal");
-            jumpInput = Input.GetAxisRaw ("Jump") > 0.1f;
-            
-            
+            jumpInput = Input.GetAxisRaw("Jump") > 0.1f;
         }
 
         private void FixedUpdate ()
         {   
             inputConsumed = true;
+                            
             
             var dt = Time.fixedDeltaTime;
             var frameVelocity = new Vector2 (
