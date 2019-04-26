@@ -5,14 +5,26 @@ using UnityEngine;
 public class PositionPlayback : MonoBehaviour
 {
     
-    private List<Vector3> positionHistory;
-    void Start()
+    private Vector3[] positionHistory;
+    private int positionIter;
+
+    public void SetPositionHistory(Vector3[] history)
     {
+        positionHistory = history;
+        positionIter = positionHistory.Length;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+        if (positionIter > 0)
+        {
+            positionIter--;
+            transform.position = positionHistory[positionIter];
+        }
+    }
+
+    public void ResetGhost()
+    {
+        positionIter = positionHistory.Length;
     }
 }
