@@ -10,7 +10,7 @@ public class GhostSpawner : MonoBehaviour
     private List<PositionPlayback> ghosts = new List<PositionPlayback>();
 
 
-    private void Awake()
+    private void Start()
     {
         GameRoundController.Instance.SetGoalObject(this);
     }
