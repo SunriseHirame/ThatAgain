@@ -24,7 +24,6 @@ public class GhostSpawner : MonoBehaviour
             player.gameObject.SetActive(false); //disable player
             GameRoundController.Instance.PlayerFinished(); //count finished players
             SpawnGhost(player.GetPositionHistory()); //spawn new ghost
-            ResetGhosts(); //send all ghosts to their start position
             player.ClearRecordedPosition();
         }
     }
