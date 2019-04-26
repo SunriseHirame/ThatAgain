@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class PositionRecorder : MonoBehaviour
 {
-    private List<Vector3> recordedPos;
+    private List<Vector3> recordedPos = new List<Vector3>();
     private Vector3 startPosition;
     private Rigidbody2D rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        recordedPos = new List<Vector3>();
         startPosition = transform.position;
+        GameRoundController.Instance.AddPlayer(this);
     }
 
     private void FixedUpdate()

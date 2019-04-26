@@ -7,24 +7,25 @@ using UnityEngine;
 public class GhostSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject ghost;
-    private List<PositionPlayback> ghosts;
+    private List<PositionPlayback> ghosts = new List<PositionPlayback>();
 
 
     private void Awake()
     {
-        ghosts = new List<PositionPlayback>();
+        GameRoundController.Instance.SetGoalObject(this);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        PositionRecorder posRec = other.GetComponent<PositionRecorder>();
+        PositionRecorder player = other.GetComponent<PositionRecorder>();
         
-        if (posRec != null)
+        if (player != null)
         {
-            posRec.ReturnToStartPosition(); //send player back to start
-            SpawnGhost(posRec.GetPositionHistory()); //spawn new ghost
+            player.gameObject.SetActive(false); //disable player
+            GameRoundController.Instance.PlayerFinished(); //count finished players
+            SpawnGhost(player.GetPositionHistory()); //spawn new ghost
             ResetGhosts(); //send all ghosts to their start position
-            posRec.ClearRecordedPosition();
+            player.ClearRecordedPosition();
         }
     }
 
@@ -34,15 +35,21 @@ public class GhostSpawner : MonoBehaviour
         GameObject spawnedGhost = Instantiate(ghost, positionHistory[positionHistory.Length - 1], quaternion.identity);
         PositionPlayback spawnedPlayback = spawnedGhost.GetComponent<PositionPlayback>();
         spawnedPlayback.SetPositionHistory(positionHistory);
-        spawnedGhost.GetComponent<PlayerKiller>().setSpawner(this);
-        ghosts.Add(spawnedPlayback); //add playback to list of all playbacks for reseting.
+        ghosts.Add(spawnedPlayback); //add playback to list of all playbacks for resetting.
+        spawnedGhost.SetActive(false); //keep new ghost disabled until reset
     }
 
     public void ResetGhosts()
     {
         foreach (PositionPlayback g in ghosts)
         {
+            g.gameObject.SetActive(true);
             g.ResetGhost();
         }
+    }
+
+    public void ClearGhosts()
+    {
+        ghosts.Clear();
     }
 }
