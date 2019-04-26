@@ -32,10 +32,12 @@ namespace Game
             
             inputX = Input.GetAxisRaw ("Horizontal");
             jumpInput = Input.GetAxisRaw ("Jump") > 0.1f;
+            
+            
         }
 
         private void FixedUpdate ()
-        {
+        {   
             inputConsumed = true;
             
             var dt = Time.fixedDeltaTime;
@@ -49,6 +51,7 @@ namespace Game
             
             attachedRigidbody.MovePosition (attachedRigidbody.position + frameVelocity);
         }
+
     }
 
 }
