@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6292241696685414704}
   - component: {fileID: 6292241696685414705}
   - component: {fileID: 932323288}
+  - component: {fileID: 6463505850204964863}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -129,7 +130,20 @@ MonoBehaviour:
   minJumpHeight: 1
   maxJumpHeight: 3
   jumpCooldown: 0.1
+  jumpCount: 0
   attachedRigidbody: {fileID: 6292241696685414706}
+--- !u!114 &6463505850204964863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6292241696685414716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ca208d1a01e4994e98d367d1da5253f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6919635353090234490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -137,11 +151,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6292241696685414707}
     m_Modifications:
-    - target: {fileID: 3987361107544326340, guid: 374e94f63384ad4468275f8cc44743da,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerGraphics
-      objectReference: {fileID: 0}
     - target: {fileID: 3987361107544326343, guid: 374e94f63384ad4468275f8cc44743da,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -196,6 +205,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987361107544326340, guid: 374e94f63384ad4468275f8cc44743da,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerGraphics
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 374e94f63384ad4468275f8cc44743da, type: 3}
