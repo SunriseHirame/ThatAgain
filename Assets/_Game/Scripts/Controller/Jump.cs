@@ -18,27 +18,30 @@ namespace Game
         [MethodImpl (MethodImplOptions.AggressiveInlining)]
         public bool GetJumpVelocity (bool onGround, ref Vector2 velocity)
         {
-            jumpCount++;
             var gravity = Physics2D.gravity.y * attachedRigidbody.gravityScale;
             var currentTime = Time.time;
-            if(lastJumpTime + jumpCooldown > currentTime || jumpCount > 2)
+                        
+            if (lastJumpTime + jumpCooldown > currentTime)
             {
-                jumpCount = 0;
                 return false;
             }
 
-            if (!onGround)
+            if (onGround)
             {
-                jumpCooldown = 0;
+                jumpCount = 0;
             }
+            
+            if (++jumpCount > 2)
+                return false;
+
             
             //gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
             //maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
             //minJumpVelocity = Mathf.Sqrt (2 * Mathf.Abs (gravity) * minJumpHeight);         
             // Mathf.Pow (timeToJumpApex, 2) * gravity = -2 * maxJumpHeight 
             
-            lastJumpTime = currentTime; 
-        
+            lastJumpTime = currentTime;
+            
             var timeToJumpApex = Mathf.Sqrt (-2 * maxJumpHeight / gravity);
             var maxJumpVelocity = Mathf.Abs (gravity) * timeToJumpApex;
             velocity.y = maxJumpVelocity; 

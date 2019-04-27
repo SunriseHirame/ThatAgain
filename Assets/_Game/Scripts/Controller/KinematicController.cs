@@ -15,9 +15,7 @@ namespace Game
         [SerializeField, Min (0)] private float smoothing = 1f;
         
         private float inputX;
-        private bool jumpInput;
-        private bool inputConsumed;
-        
+        private bool jumpInput;        
 
         [SerializeField] private Rigidbody2D attachedRigidbody;
         [SerializeField] private SurfaceChecker surfaceCheck;
@@ -34,17 +32,13 @@ namespace Game
         private float damperValue;
         private void Update ()
         {
-            if (!inputConsumed)
-                return;
-            inputConsumed = false;
-            
             inputX = playerInput.GetMovement ().x;
-            jumpInput = playerInput.GetJump ();
+            if (jumpInput == false)
+                jumpInput = playerInput.GetJump ();    
         }
 
         private void FixedUpdate ()
         {   
-            inputConsumed = true;
             surfaceInfo = surfaceCheck.CheckCollisions ();   
 
             var dt = Time.fixedDeltaTime;
@@ -55,8 +49,10 @@ namespace Game
                 smoothing / airMult, speed / dt, dt);
 
             if (jumpInput)
+            {
+                jumpInput = false;
                 jump.GetJumpVelocity (surfaceInfo.OnGround, ref currentVelocity);
-                        
+            }
             attachedRigidbody.velocity = currentVelocity;
         }
 
