@@ -402,10 +402,10 @@ MonoBehaviour:
   scanDistance: {x: 0.08, y: 0.08}
   CheckBounds:
     serializedVersion: 2
-    x: 0
-    y: 1
-    width: 1
-    height: 2
+    x: 0.02
+    y: 1.09
+    width: 0.44
+    height: 1.7
   Resolution: 20
   attachedRigidbody: {fileID: 6292241696685414706}
 --- !u!114 &6292241696685414705
