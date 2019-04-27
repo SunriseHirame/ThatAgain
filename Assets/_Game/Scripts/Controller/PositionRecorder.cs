@@ -5,6 +5,7 @@ namespace Game
 {
     public class PositionRecorder : MonoBehaviour
     {
+        [SerializeField] private TimeTracker timeTracker;
         private List<Vector3> recordedPos = new List<Vector3> ();
         private Vector3 startPosition;
         private Rigidbody2D rb;
@@ -19,6 +20,7 @@ namespace Game
             rb = GetComponent<Rigidbody2D> ();
             startPosition = transform.position;
             GameRoundController.Instance.AddPlayer (this);
+            timeTracker.StartCounting();
         }
 
         private void FixedUpdate ()
@@ -51,6 +53,7 @@ namespace Game
 
         public void FinishLevel ()
         {
+            timeTracker.SetTime();
             finished = true;
             GameRoundController.Instance.PlayerFinished (); //count finished players
             ClearRecordedPosition ();
