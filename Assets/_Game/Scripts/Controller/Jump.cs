@@ -7,7 +7,8 @@ namespace Game
     {
         [SerializeField] private float minJumpHeight = 1;
         [SerializeField] private float maxJumpHeight = 5;
-        [SerializeField] private float jumpCooldown = 0.1f;
+        [SerializeField] private float jumpCooldown = 0.05f;
+        [SerializeField] private int jumpCount = 0;
         
         [SerializeField]
         private Rigidbody2D attachedRigidbody;
@@ -17,11 +18,18 @@ namespace Game
         [MethodImpl (MethodImplOptions.AggressiveInlining)]
         public bool GetJumpVelocity (bool onGround, ref Vector2 velocity)
         {
+            jumpCount++;
             var gravity = Physics2D.gravity.y * attachedRigidbody.gravityScale;
             var currentTime = Time.time;
-            if(!onGround || lastJumpTime + jumpCooldown > currentTime)
-            {             
+            if(lastJumpTime + jumpCooldown > currentTime || jumpCount > 2)
+            {
+                jumpCount = 0;
                 return false;
+            }
+
+            if (!onGround)
+            {
+                jumpCooldown = 0;
             }
             
             //gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
@@ -29,7 +37,7 @@ namespace Game
             //minJumpVelocity = Mathf.Sqrt (2 * Mathf.Abs (gravity) * minJumpHeight);         
             // Mathf.Pow (timeToJumpApex, 2) * gravity = -2 * maxJumpHeight 
             
-            lastJumpTime = currentTime;
+            lastJumpTime = currentTime; 
         
             var timeToJumpApex = Mathf.Sqrt (-2 * maxJumpHeight / gravity);
             var maxJumpVelocity = Mathf.Abs (gravity) * timeToJumpApex;
