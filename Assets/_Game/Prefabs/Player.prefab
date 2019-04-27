@@ -551,7 +551,7 @@ MonoBehaviour:
   - {fileID: 6358560239591316778, guid: 23da14755060d8c42a048066473226d3, type: 3}
   - {fileID: 4808554435707563706, guid: c70f43bed23b8f948bf48d9cda62aaca, type: 3}
   - {fileID: 2134654704840665641, guid: 61420af2a6b04384091b39a6ef053a5e, type: 3}
-  force: 20
+  force: 4
   delta: {x: 0, y: 1, z: 0}
 --- !u!1 &6511766722858956663
 GameObject:
