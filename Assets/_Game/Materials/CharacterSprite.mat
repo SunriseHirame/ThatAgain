@@ -63,6 +63,7 @@ Material:
     m_Floats:
     - Boolean_F530F47C: 1
     - PixelSnap: 0
+    - Vector1_4C0BC762: 0.45
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -81,7 +82,8 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - Color_B283925A: {r: 0, g: 0.69433475, b: 1, a: 0.5882353}
+    - Color_59CC7C51: {r: 0.04032254, g: 1, b: 0, a: 1}
+    - Color_B283925A: {r: 0, g: 0.39215687, b: 1, a: 0.37254903}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
