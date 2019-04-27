@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/_Dev/Lauri/Scenes/Menu.unity
     guid: a453a804930a0b5488a2ea4e9c8e89c1
   - enabled: 1
-    path: Assets/_Dev/Lauri/Scenes/devscene_lauri.unity
-    guid: c8abfea648c2f954fba22e79f0a66a6e
+    path: Assets/_Dev/Jere/devscene_jere.unity
+    guid: 3b60f46d3cb209a418adb9ec661669bc
   m_configObjects: {}
