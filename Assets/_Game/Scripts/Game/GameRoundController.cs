@@ -2,78 +2,82 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameRoundController : MonoBehaviour
+namespace Game
 {
-    public static GameRoundController Instance { get; private set; }
-    
-    private GhostSpawner goal;
-
-    private List<PositionRecorder> players = new List<PositionRecorder>();
-    
-    public int playerCount;
-    public int finishedPlayers;
-    public int deadPlayers;
-
-    private void Awake()
+    public class GameRoundController : MonoBehaviour
     {
-        Instance = this;
-    }
+        public static GameRoundController Instance { get; private set; }
 
-    void Update()
-    {
-        if (EveryoneFinished())
+        //private GhostSpawner goal;
+
+        private List<PositionRecorder> players = new List<PositionRecorder> ();
+
+        public int playerCount;
+        public int finishedPlayers;
+        public int deadPlayers;
+
+        void Update ()
         {
-            StartRound();
+            if (EveryoneFinished ())
+            {
+                StartRound ();
+            }
         }
-    }
 
-    public void StartRound()
-    {
-        //resets ghosts and players
-        GhostSpawner.Instance.ResetGhosts();
-        ResetPlayers();
-    }
-
-    private void ResetPlayers()
-    {
-        finishedPlayers = 0;
-        deadPlayers = 0;
-        foreach (PositionRecorder player in players) //reset all players
+        public void StartRound ()
         {
-            player.ReturnToStartPosition();
-            player.gameObject.SetActive(true);
+            //resets ghosts and players
+            GhostSpawner.Instance.ResetGhosts ();
+            ResetPlayers ();
         }
-    }
 
-    public void SetGoalObject(GhostSpawner spawner)
-    {
-        goal = spawner;
-    }
-    
-    private bool EveryoneFinished()
-    {
-        return (playerCount <= finishedPlayers + deadPlayers);
-    }
+        private void ResetPlayers ()
+        {
+            finishedPlayers = 0;
+            deadPlayers = 0;
+            foreach (PositionRecorder player in players) //reset all players
+            {
+                player.ReturnToStartPosition ();
+                player.gameObject.SetActive (true);
+            }
+        }
 
-    public void AddPlayer(PositionRecorder recorder)
-    {
-        players.Add(recorder);
-        playerCount++;
-    }
+        public void SetGoalObject (GhostSpawner spawner)
+        {
+            //goal = spawner;
+        }
 
-    public void RemovePlayer(PositionRecorder recorder)
-    {
-        players.Remove(recorder);
-        playerCount--;
-    }
+        private bool EveryoneFinished ()
+        {
+            return (playerCount <= finishedPlayers + deadPlayers);
+        }
 
-    public void PlayerDied()
-    {
-        deadPlayers++;
-    }
+        public void AddPlayer (PositionRecorder recorder)
+        {
+            players.Add (recorder);
+            playerCount++;
+        }
 
-    public void PlayerFinished()
-    {
-        finishedPlayers++;
+        public void RemovePlayer (PositionRecorder recorder)
+        {
+            players.Remove (recorder);
+            playerCount--;
+        }
+
+        public void PlayerDied ()
+        {
+            deadPlayers++;
+        }
+
+        public void PlayerFinished ()
+        {
+            finishedPlayers++;
+        }
+
+        [RuntimeInitializeOnLoadMethod (RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void Init ()
+        {
+            Instance = new GameObject ("GameController").AddComponent<GameRoundController> ();
+        }
     }
 }

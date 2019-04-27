@@ -4,22 +4,24 @@ using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class GhostSpawner : MonoBehaviour
+namespace Game
 {
-    public static GhostSpawner Instance { get; private set; }
+    public class GhostSpawner : MonoBehaviour
+    {
+        public static GhostSpawner Instance { get; private set; }
     
-    [SerializeField] private GameObject ghost;
-    private List<PositionPlayback> ghosts = new List<PositionPlayback>();
+        [SerializeField] private GameObject ghost;
+        private List<PositionPlayback> ghosts = new List<PositionPlayback>();
 
-    private void Awake()
-    {
-        Instance = this;
-    }
+        private void Awake()
+        {
+            Instance = this;
+        }
 
-    private void Start()
-    {
-        GameRoundController.Instance.SetGoalObject(this);
-    }
+        private void Start()
+        {
+            GameRoundController.Instance.SetGoalObject(this);
+        }
 
     private void OnTriggerEnter2D(Collider2D other) //player enters finish line
     {
@@ -27,33 +29,39 @@ public class GhostSpawner : MonoBehaviour
         
         if (player != null && !player.IsFinished())
         {
-            
-            SpawnGhost(player.GetPositionHistory()); //spawn new ghost
-            player.FinishLevel();
-        }
-    }
-
-    private void SpawnGhost(Vector3[] positionHistory)
-    {
-        //spawn ghost at last point in history
-        GameObject spawnedGhost = Instantiate(ghost, positionHistory[positionHistory.Length - 1], quaternion.identity);
-        PositionPlayback spawnedPlayback = spawnedGhost.GetComponent<PositionPlayback>();
-        spawnedPlayback.SetPositionHistory(positionHistory);
-        ghosts.Add(spawnedPlayback); //add playback to list of all playbacks for resetting.
+            PositionRecorder player = other.GetComponent<PositionRecorder>();
         
-    }
+            if (player != null && !player.IsFinished())
+            {
+            
+                SpawnGhost(player.GetPositionHistory()); //spawn new ghost
+                player.FinishLevel();
+            }
+        }
 
-    public void ResetGhosts()
-    {
-        foreach (PositionPlayback g in ghosts)
+        private void SpawnGhost(Vector3[] positionHistory)
         {
-            g.gameObject.SetActive(true);
-            g.ResetGhost();
+            //spawn ghost at last point in history
+            GameObject spawnedGhost = Instantiate(ghost, positionHistory[positionHistory.Length - 1], quaternion.identity);
+            PositionPlayback spawnedPlayback = spawnedGhost.GetComponent<PositionPlayback>();
+            spawnedPlayback.SetPositionHistory(positionHistory);
+            ghosts.Add(spawnedPlayback); //add playback to list of all playbacks for resetting.
+        
+        }
+
+        public void ResetGhosts()
+        {
+            foreach (PositionPlayback g in ghosts)
+            {
+                g.gameObject.SetActive(true);
+                g.ResetGhost();
+            }
+        }
+
+        public void ClearGhosts()
+        {
+            ghosts.Clear();
         }
     }
 
-    public void ClearGhosts()
-    {
-        ghosts.Clear();
-    }
 }

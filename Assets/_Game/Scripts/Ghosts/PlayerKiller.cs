@@ -3,20 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerKiller : MonoBehaviour
+namespace Game
 {
-    private void OnTriggerEnter2D(Collider2D other)
+    public class PlayerKiller : MonoBehaviour
     {
-        if (other.attachedRigidbody)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            PositionRecorder player = other.attachedRigidbody.GetComponent<PositionRecorder>();
-            if (player != null)
+            if (other.attachedRigidbody)
             {
-                if (!player.IsDead())
+                PositionRecorder player = other.attachedRigidbody.GetComponent<PositionRecorder>();
+                if (player != null)
                 {
-                    player.Die();
+                    if (!player.IsDead())
+                    {
+                        player.Die();
+                    }
                 }
             }
         }
     }
+
 }
