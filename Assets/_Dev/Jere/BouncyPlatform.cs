@@ -10,6 +10,7 @@ public class BouncyPlatform : MonoBehaviour
     {
         if ((1 << other.gameObject.layer) == PlayerLayer)
         {
+            other.attachedRigidbody.velocity = Vector2.zero;
             other.attachedRigidbody.AddForce(transform.up * Force,ForceMode2D.Impulse);
         }
     }

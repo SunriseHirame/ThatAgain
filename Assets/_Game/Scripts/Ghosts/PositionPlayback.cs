@@ -52,6 +52,7 @@ public class PositionPlayback : MonoBehaviour
 
     public void ResetGhost()
     {
+        pong = false;
         positionIter = positionHistory.Length;
     }
 }
