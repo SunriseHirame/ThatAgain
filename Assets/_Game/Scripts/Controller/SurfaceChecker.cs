@@ -16,7 +16,7 @@ namespace Game
         public SurfaceInfo CheckCollisions (ref Vector2 velocity)
         {
             var collisionFlags = ScanSurfaces (ref velocity);
-            return new SurfaceInfo ();
+            return new SurfaceInfo (collisionFlags, false);
         }
 
         private CollisionFlags ScanSurfaces (ref Vector2 velocity)

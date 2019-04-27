@@ -21,6 +21,9 @@ public class GameRoundController : MonoBehaviour
 
     void Update()
     {
+        print(playerCount);
+        print(finishedPlayers);
+        print(deadPlayers);
         if (EveryoneFinished())
         {
             StartRound();
