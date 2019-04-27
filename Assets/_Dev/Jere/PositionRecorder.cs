@@ -25,13 +25,14 @@ public class PositionRecorder : MonoBehaviour
     {
         rb.velocity = Vector2.zero;
         transform.position = startPosition;
+        ClearRecordedPosition();
     }
     
     public Vector3[] GetPositionHistory()
     {
         return recordedPos.ToArray();
     }
-
+    
     public void ClearRecordedPosition()
     {
         recordedPos.Clear();
