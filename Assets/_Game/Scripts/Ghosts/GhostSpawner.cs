@@ -25,12 +25,11 @@ public class GhostSpawner : MonoBehaviour
     {
         PositionRecorder player = other.GetComponent<PositionRecorder>();
         
-        if (player != null)
+        if (player != null && !player.IsFinished())
         {
-            player.gameObject.SetActive(false); //disable player
-            GameRoundController.Instance.PlayerFinished(); //count finished players
+            
             SpawnGhost(player.GetPositionHistory()); //spawn new ghost
-            player.ClearRecordedPosition();
+            player.FinishLevel();
         }
     }
 

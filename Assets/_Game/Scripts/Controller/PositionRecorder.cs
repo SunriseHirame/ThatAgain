@@ -9,6 +9,10 @@ public class PositionRecorder : MonoBehaviour
     private Vector3 startPosition;
     private Rigidbody2D rb;
     private bool dead;
+    private bool finished;
+
+    public int DeathCount { get; private set; }
+    public int FinishCount{ get; private set; }
 
     private void Start()
     {
@@ -25,6 +29,7 @@ public class PositionRecorder : MonoBehaviour
     public void ReturnToStartPosition()
     {
         dead = false;
+        finished = false;
         rb.velocity = Vector2.zero;
         transform.position = startPosition;
         ClearRecordedPosition();
@@ -32,12 +37,30 @@ public class PositionRecorder : MonoBehaviour
 
     public void Die()
     {
+        GameRoundController.Instance.PlayerDied();
+        ClearRecordedPosition();
+        gameObject.SetActive(false);
         dead = true;
+        DeathCount++;
     }
-
+    
     public bool IsDead()
     {
         return dead;
+    }
+
+    public void FinishLevel()
+    {
+        finished = true;
+        GameRoundController.Instance.PlayerFinished(); //count finished players
+        ClearRecordedPosition();
+        gameObject.SetActive(false);
+        FinishCount++;
+    }
+
+    public bool IsFinished()
+    {
+        return finished;
     }
     
     public Vector3[] GetPositionHistory()
@@ -45,10 +68,9 @@ public class PositionRecorder : MonoBehaviour
         return recordedPos.ToArray();
     }
     
-    public void ClearRecordedPosition()
+    private void ClearRecordedPosition()
     {
         recordedPos.Clear();
     }
-
     
 }
