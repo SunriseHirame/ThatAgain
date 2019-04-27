@@ -23,7 +23,7 @@ public class GhostSpawner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) //player enters finish line
     {
-        PositionRecorder player = other.GetComponent<PositionRecorder>();
+        PositionRecorder player = other.attachedRigidbody.GetComponent<PositionRecorder>();
         
         if (player != null && !player.IsFinished())
         {
