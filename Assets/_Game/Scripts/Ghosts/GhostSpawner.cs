@@ -9,7 +9,7 @@ namespace Game
     public class GhostSpawner : MonoBehaviour
     {
         public static GhostSpawner Instance { get; private set; }
-    
+
         [SerializeField] private GameObject ghost;
         private List<PositionPlayback> ghosts = new List<PositionPlayback>();
 
@@ -23,30 +23,26 @@ namespace Game
             GameRoundController.Instance.SetGoalObject(this);
         }
 
-    private void OnTriggerEnter2D(Collider2D other) //player enters finish line
-    {
-        PositionRecorder player = other.attachedRigidbody.GetComponent<PositionRecorder>();
-        
-        if (player != null && !player.IsFinished())
+        private void OnTriggerEnter2D(Collider2D other) //player enters finish line
         {
-            PositionRecorder player = other.GetComponent<PositionRecorder>();
-        
+            PositionRecorder player = other.attachedRigidbody.GetComponent<PositionRecorder>();
+
             if (player != null && !player.IsFinished())
             {
-            
                 SpawnGhost(player.GetPositionHistory()); //spawn new ghost
                 player.FinishLevel();
             }
         }
 
+
         private void SpawnGhost(Vector3[] positionHistory)
         {
             //spawn ghost at last point in history
-            GameObject spawnedGhost = Instantiate(ghost, positionHistory[positionHistory.Length - 1], quaternion.identity);
+            GameObject spawnedGhost =
+                Instantiate(ghost, positionHistory[positionHistory.Length - 1], quaternion.identity);
             PositionPlayback spawnedPlayback = spawnedGhost.GetComponent<PositionPlayback>();
             spawnedPlayback.SetPositionHistory(positionHistory);
             ghosts.Add(spawnedPlayback); //add playback to list of all playbacks for resetting.
-        
         }
 
         public void ResetGhosts()
@@ -63,5 +59,4 @@ namespace Game
             ghosts.Clear();
         }
     }
-
 }
