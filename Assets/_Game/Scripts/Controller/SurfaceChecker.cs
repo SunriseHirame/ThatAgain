@@ -126,12 +126,15 @@ namespace Game
     public struct SurfaceInfo
     {
         public readonly CollisionFlags Collisions;
-        public readonly bool IsSlope;
+        public readonly bool OnSlope;
 
-        public SurfaceInfo (CollisionFlags collisions, bool isSlope)
+        public bool OnGround => Collisions.HasFlag (CollisionFlags.Below);
+        public bool OnWall => Collisions.HasFlag (CollisionFlags.Left) || Collisions.HasFlag (CollisionFlags.Right);
+
+        public SurfaceInfo (CollisionFlags collisions, bool onSlope)
         {
             Collisions = collisions;
-            IsSlope = isSlope;
+            OnSlope = onSlope;
         }
     }
 
