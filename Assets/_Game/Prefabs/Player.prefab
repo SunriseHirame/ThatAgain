@@ -400,13 +400,13 @@ MonoBehaviour:
   surfaceMask:
     serializedVersion: 2
     m_Bits: 1
-  scanDistance: {x: 0.08, y: 0.08}
+  scanDistance: {x: 0.1, y: 0.1}
   CheckBounds:
     serializedVersion: 2
     x: 0.02
     y: 1.09
-    width: 0.44
-    height: 1.7
+    width: 0.4
+    height: 1.64
   Resolution: 20
   attachedRigidbody: {fileID: 6292241696685414706}
 --- !u!114 &6292241696685414705
