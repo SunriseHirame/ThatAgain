@@ -60,7 +60,6 @@ namespace Game
                 
             var player = otherTransform.GetComponent<Player> ();
             targets.Add (player ? player.Body : otherTransform);
-            print ("enter");
         }
 
         private void OnTriggerExit2D (Collider2D other)
@@ -75,7 +74,6 @@ namespace Game
                 
             var player = otherTransform.GetComponent<Player> ();
             targets.Remove (player ? player.Body : otherTransform);
-            print ("Exit");
         }
     }
 
