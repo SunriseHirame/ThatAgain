@@ -195,18 +195,18 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932323287}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &932323290
 MonoBehaviour:
@@ -220,9 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5375cb0e978b13b4c8c698b6d726daf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   jumpHeight: 5
-  gravity: 20
   airControl: 1
   attachedRigidbody: {fileID: 932323289}
   surfaceCheck: {fileID: 932323291}
@@ -241,6 +240,7 @@ MonoBehaviour:
   surfaceMask:
     serializedVersion: 2
     m_Bits: 1
+  scanDistance: {x: 0.08, y: 0.08}
   CheckBounds:
     serializedVersion: 2
     x: 0

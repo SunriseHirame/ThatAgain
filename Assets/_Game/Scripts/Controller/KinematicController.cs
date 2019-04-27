@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Runtime.CompilerServices;
+using UnityEngine;
  
 namespace Game
 {
@@ -11,18 +12,22 @@ namespace Game
         internal float jumpHeight = 5;
 
         [SerializeField]
-        private float gravity = 20;
-        
-        [SerializeField]
         private float airControl = 1f;
         
         private float inputX;
         private bool jumpInput;
-        
         private bool inputConsumed;
+        
 
         [SerializeField] private Rigidbody2D attachedRigidbody;
         [SerializeField] private SurfaceChecker surfaceCheck;
+
+        private float fallMultiplier = 2.5f;
+        private float lowJumpMultiplier = 1.5f;
+
+        // This is just to show this in inspector
+        [SerializeField]
+        private SurfaceInfo surfaceInfo;
         
         private void Update ()
         {
@@ -37,16 +42,35 @@ namespace Game
         private void FixedUpdate ()
         {   
             inputConsumed = true;
-                            
-            
             var dt = Time.fixedDeltaTime;
-            var frameVelocity = new Vector2 (
-                inputX * speed * dt, 
-                jumpInput ? jumpHeight * dt : -0.02f
-                ); 
+            var yVelocity = attachedRigidbody.velocity.y;
+
+            if (yVelocity < 0)
+            {
+                yVelocity += Vector2.up.y * Physics2D.gravity.y * (fallMultiplier -1) * Time.deltaTime;
+            } 
+            else if(yVelocity > 0 && !Input.GetButtonDown("Jump"))
+            {
+                yVelocity += Vector2.up.y * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            }
             
-            var surfaceInfo = surfaceCheck.CheckCollisions (ref frameVelocity);            
-            attachedRigidbody.MovePosition (attachedRigidbody.position + frameVelocity);
+            var frameVelocity = new Vector2 (
+                inputX * speed, 
+                jumpInput ?  GetJumpHeight () : 0
+                );
+
+            frameVelocity.y += yVelocity;
+            
+            surfaceInfo = surfaceCheck.CheckCollisions ();   
+            attachedRigidbody.velocity = frameVelocity;
+        }
+
+        [MethodImpl (MethodImplOptions.AggressiveInlining)]
+        private float GetJumpHeight ()
+        {
+            if(surfaceInfo.OnGround)
+                return Mathf.Sqrt (jumpHeight * -10 * Physics2D.gravity.y * Time.fixedDeltaTime);
+            return 0;
         }
 
     }

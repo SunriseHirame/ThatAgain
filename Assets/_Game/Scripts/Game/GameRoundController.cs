@@ -10,9 +10,9 @@ public class GameRoundController : MonoBehaviour
 
     private List<PositionRecorder> players = new List<PositionRecorder>();
     
-    private int playerCount;
-    private int finishedPlayers;
-    private int deadPlayers;
+    public int playerCount;
+    public int finishedPlayers;
+    public int deadPlayers;
 
     private void Awake()
     {
@@ -21,9 +21,6 @@ public class GameRoundController : MonoBehaviour
 
     void Update()
     {
-        print(playerCount);
-        print(finishedPlayers);
-        print(deadPlayers);
         if (EveryoneFinished())
         {
             StartRound();
@@ -33,11 +30,15 @@ public class GameRoundController : MonoBehaviour
     public void StartRound()
     {
         //resets ghosts and players
-        goal.ResetGhosts();
+        GhostSpawner.Instance.ResetGhosts();
+        ResetPlayers();
+    }
+
+    private void ResetPlayers()
+    {
         finishedPlayers = 0;
         deadPlayers = 0;
-
-        foreach (PositionRecorder player in players)
+        foreach (PositionRecorder player in players) //reset all players
         {
             player.ReturnToStartPosition();
             player.gameObject.SetActive(true);
@@ -51,7 +52,7 @@ public class GameRoundController : MonoBehaviour
     
     private bool EveryoneFinished()
     {
-        return (playerCount == finishedPlayers + deadPlayers);
+        return (playerCount <= finishedPlayers + deadPlayers);
     }
 
     public void AddPlayer(PositionRecorder recorder)
