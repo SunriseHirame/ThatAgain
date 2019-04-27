@@ -17,7 +17,7 @@ public class HighScoreElement : MonoBehaviour
     public void SetValues (string username, int time, int score)
     {
         UsernameField.text = username;
-        TimeField.text = time.ToString ();
+        TimeField.text = (time / 1000f).ToString ("F2");
         ScoreField.text = score.ToString ();
     }
 }
