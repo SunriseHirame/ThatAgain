@@ -13,6 +13,7 @@ namespace Game
         [SerializeField] private GameObject graphics;
         [SerializeField] private PlayerData playerData;
         [SerializeField] private DeathZoom zoom;
+        [SerializeField] private LayeredAudioPlayer layeredAudioPlayer;
         private List<Vector3> recordedPos = new List<Vector3> ();
         private Vector3 startPosition;
         private Rigidbody2D rb;
@@ -39,13 +40,13 @@ namespace Game
 
         public void ReturnToStartPosition ()
         {
-            zoom.ResetZoom();
             graphics.SetActive(true);
             dead = false;
             finished = false;
             rb.velocity = Vector2.zero;
             transform.position = startPosition;
             ClearRecordedPosition ();
+            zoom.ResetZoom();
         }
 
         public void Die ()
@@ -86,7 +87,7 @@ namespace Game
 
         public void FinishLevel ()
         {
-            
+            layeredAudioPlayer.ActivateNext();
             timeTracker.SetTime();
             finished = true;
             GameRoundController.Instance.PlayerFinished (); //count finished players
@@ -95,7 +96,6 @@ namespace Game
             FinishCount++;
             OnLevelFinished?.Invoke();
             playerData.PushScore();
-
         }
 
         public bool IsFinished ()
