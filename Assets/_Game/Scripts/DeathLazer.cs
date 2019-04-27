@@ -11,15 +11,41 @@ namespace Game
     
         [SerializeField] private LayerMask hitMask;    
         [SerializeField] private LineRenderer lineRenderer;
-    
+        [SerializeField] private ParticleSystem hitEffect;
+            
         private void Update()
         {
             lineRenderer.enabled = targets.Count > 0;
+            UpdateLazer ();
+        }
+
+        private void UpdateLazer ()
+        {
             if (!lineRenderer.enabled)
+            {
+                if (hitEffect.isPlaying || !hitEffect.isStopped)
+                {
+                    hitEffect.Stop ();
+                }   
                 return;
-            
+            }
+
+            var ownPosition = transform.position;
+            var direction = targets[0].position - ownPosition;
+            var rayHit = Physics2D.Raycast (ownPosition, direction);
+
+            if (rayHit == default (RaycastHit2D))
+                return;
+
             lineRenderer.SetPosition (0, transform.position);
-            lineRenderer.SetPosition (1, targets[0].position);
+            lineRenderer.SetPosition (1, rayHit.point);
+
+            if (!hitEffect.isPlaying)
+            {    
+                hitEffect.Play ();
+            }
+            
+            hitEffect.transform.position = rayHit.point;
         }
 
         private void OnTriggerEnter2D (Collider2D other)
@@ -34,6 +60,7 @@ namespace Game
                 
             var player = otherTransform.GetComponent<Player> ();
             targets.Add (player ? player.Body : otherTransform);
+            print ("enter");
         }
 
         private void OnTriggerExit2D (Collider2D other)
@@ -48,6 +75,7 @@ namespace Game
                 
             var player = otherTransform.GetComponent<Player> ();
             targets.Remove (player ? player.Body : otherTransform);
+            print ("Exit");
         }
     }
 

@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da92add404dcad840b3ba21c7d3f556a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoIndex: 1
+  autoIndex: 0
   controlIndex: -1
 --- !u!114 &6292241696685414704
 MonoBehaviour:
