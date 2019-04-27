@@ -34,22 +34,24 @@ public class PlayerInput : MonoBehaviour
             }
             SetIndex (inputs.Count);
         }
+        SetIndex (-1);
     }
 
     public void SetIndex (int index)
     {
-        if (controlIndex != -1)
+        if (controlIndex != -1 && inputs.Count > 0)
         {
             inputs[controlIndex] = null;
         }
         
         controlIndex = index;
         
-        horizontalAxis = $"{HorizontalBase}{index}";
-        verticalAxis = $"{VerticalBase}{index}";
-        jump = $"{JumpBase}{index}";
+        horizontalAxis = index == -1 ? HorizontalBase : $"{HorizontalBase}{index}";
+        verticalAxis =  index == -1 ? VerticalBase : $"{VerticalBase}{index}";
+        jump =  index == -1 ? JumpBase : $"{JumpBase}{index}";
         
-        inputs.Insert (index, this);
+        if (index != -1)
+            inputs.Insert (index, this);
     }
 
     public Vector2 GetMovement ()
@@ -61,6 +63,6 @@ public class PlayerInput : MonoBehaviour
 
     public bool GetJump ()
     {
-        return Input.GetButtonDown("Jump"); // (jump) > 0.2f;
+        return Input.GetButtonDown(jump); // (jump) > 0.2f;
     }
 }
