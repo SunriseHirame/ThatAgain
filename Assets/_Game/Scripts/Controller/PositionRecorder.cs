@@ -20,7 +20,7 @@ namespace Game
         private bool dead;
         private bool finished;
         public static System.Action OnLevelFinished;
-        public static System.Action OnPlayerDied;
+        public static System.Action OnPlayerLoseHealth;
 
         public int DeathCount { get; private set; }
         public int FinishCount { get; private set; }
@@ -51,13 +51,12 @@ namespace Game
 
         public void Die ()
         {
-            ClearRecordedPosition ();
             dead = true;
             DeathCount++;
             DeathEffects();
             Invoke(nameof(Disable),3);
             
-            OnPlayerDied?.Invoke();
+            OnPlayerLoseHealth?.Invoke();
             if (DeathCount >= 5)
             {
                 GameRoundController.Instance.EndGame();
@@ -91,7 +90,6 @@ namespace Game
             timeTracker.SetTime();
             finished = true;
             GameRoundController.Instance.PlayerFinished (); //count finished players
-            ClearRecordedPosition ();
             gameObject.SetActive (false);
             FinishCount++;
             OnLevelFinished?.Invoke();
