@@ -33,17 +33,17 @@ public class DeathZoom : MonoBehaviour
             mainCamera.transform.position = new Vector3(mainCamera.transform.position.x,mainCamera.transform.position.y,-10);
             yield return null;
         }
-        StartCoroutine(ZoomBack());
+        
     }
 
     public void ResetZoom()
     {
-        //asd
+        StartCoroutine(ZoomBack());
     }
 
     private IEnumerator ZoomBack()
     {
-        for (float i = 0; i < 1.0; i += Time.deltaTime)
+        for (float i = 0; i < 1.0; i += Time.deltaTime*2.0f)
         {
             mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, size, i);
             mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, startPos, i);
