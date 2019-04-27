@@ -11,6 +11,7 @@ namespace Game
         [SerializeField] private GameObject deathParticleSystem;
         [SerializeField] private GameObject ragdoll;
         [SerializeField] private GameObject graphics;
+        [SerializeField] private PlayerData playerData;
         private List<Vector3> recordedPos = new List<Vector3> ();
         private Vector3 startPosition;
         private Rigidbody2D rb;
@@ -73,12 +74,14 @@ namespace Game
 
         public void FinishLevel ()
         {
+            
             timeTracker.SetTime();
             finished = true;
             GameRoundController.Instance.PlayerFinished (); //count finished players
             ClearRecordedPosition ();
             gameObject.SetActive (false);
             FinishCount++;
+            playerData.PushScore();
         }
 
         public bool IsFinished ()
