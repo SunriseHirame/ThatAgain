@@ -64,7 +64,7 @@ namespace Game
 
             
             
-            HandleWallCling (ref currentVelocity);
+            //HandleWallCling (ref currentVelocity);
             HandleJump (ref currentVelocity);
             
             attachedRigidbody.velocity = currentVelocity;
