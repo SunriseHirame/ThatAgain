@@ -20,7 +20,7 @@ namespace Game
         private bool dead;
         private bool finished;
         public static System.Action OnLevelFinished;
-        public static System.Action OnPlayerDied;
+        public static System.Action OnPlayerLoseHealth;
 
         public int DeathCount { get; private set; }
         public int FinishCount { get; private set; }
@@ -56,7 +56,7 @@ namespace Game
             DeathEffects();
             Invoke(nameof(Disable),3);
             
-            OnPlayerDied?.Invoke();
+            OnPlayerLoseHealth?.Invoke();
             if (DeathCount >= 5)
             {
                 GameRoundController.Instance.EndGame();
