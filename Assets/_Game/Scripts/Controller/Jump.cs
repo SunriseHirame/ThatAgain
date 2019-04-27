@@ -1,50 +1,41 @@
-﻿using System.Collections;
+﻿using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Game
 {
     public class Jump : MonoBehaviour
     {
+        [SerializeField] private float minJumpHeight = 1;
+        [SerializeField] private float maxJumpHeight = 5;
+        [SerializeField] private float jumpCooldown = 0.1f;
         
-        [SerializeField] private float jumpSpeed;
-        
-        [SerializeField] private Transform groundChecker;
-        
-        private float inputY;
-        private bool onGround;
+        [SerializeField]
+        private Rigidbody2D attachedRigidbody;
 
-        private Vector3 groundPos;
-        private float maxJumpHeight;
-        private bool doJump;
-        private KinematicController kinematicController;
-
-        private void Start()
+        private float lastJumpTime;
+        
+        [MethodImpl (MethodImplOptions.AggressiveInlining)]
+        public bool GetJumpVelocity (bool onGround, ref Vector2 velocity)
         {
-            kinematicController = GetComponent<KinematicController>();
-            groundPos = groundChecker.transform.position;
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                StartCoroutine(Jumping());
-                enabled = false;
+            var gravity = Physics2D.gravity.y * attachedRigidbody.gravityScale;
+            var currentTime = Time.time;
+            if(!onGround || lastJumpTime + jumpCooldown > currentTime)
+            {             
+                return false;
             }
+            
+            //gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
+            //maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
+            //minJumpVelocity = Mathf.Sqrt (2 * Mathf.Abs (gravity) * minJumpHeight);         
+            // Mathf.Pow (timeToJumpApex, 2) * gravity = -2 * maxJumpHeight 
+            
+            lastJumpTime = currentTime;
+        
+            var timeToJumpApex = Mathf.Sqrt (-2 * maxJumpHeight / gravity);
+            var maxJumpVelocity = Mathf.Abs (gravity) * timeToJumpApex;
+            velocity.y = maxJumpVelocity; 
+            return true;
         }
-
-        private IEnumerator Jumping()
-        {
-            kinematicController.jumpHeight = Mathf.Sqrt(kinematicController.jumpHeight * -2f * Physics2D.gravity.y * Time.fixedDeltaTime);
-            while (true)
-            {
-                kinematicController.jumpHeight += Physics2D.gravity.y * 2 * Time.fixedDeltaTime;
-                yield return new WaitForFixedUpdate();
-            }
-
-            doJump = false;
-        }
-
 
 
     }
