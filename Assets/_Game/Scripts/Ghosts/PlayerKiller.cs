@@ -7,11 +7,11 @@ namespace Game
 {
     public class PlayerKiller : MonoBehaviour
     {
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.attachedRigidbody)
+            if (other.collider.attachedRigidbody)
             {
-                PositionRecorder player = other.attachedRigidbody.GetComponent<PositionRecorder>();
+                PositionRecorder player = other.collider.attachedRigidbody.GetComponent<PositionRecorder>();
                 if (player != null)
                 {
                     if (!player.IsDead())
