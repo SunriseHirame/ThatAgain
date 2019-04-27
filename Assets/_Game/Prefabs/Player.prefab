@@ -50,12 +50,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &4713219619639991258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da92add404dcad840b3ba21c7d3f556a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoIndex: 1
+  controlIndex: -1
 --- !u!114 &6292241696685414704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,9 +108,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpHeight: 5
-  airControl: 1
+  airControl: 0.538
+  smoothing: 0.12
   attachedRigidbody: {fileID: 6292241696685414706}
   surfaceCheck: {fileID: 6292241696685414704}
+  playerInput: {fileID: 4713219619639991258}
 --- !u!1001 &6919635353090234490
 PrefabInstance:
   m_ObjectHideFlags: 0
