@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using Unity.Mathematics;
 using UnityEngine;
  
 namespace Game
@@ -11,8 +12,10 @@ namespace Game
         [SerializeField]
         internal float jumpHeight = 5;
 
-        [SerializeField]
+        [SerializeField, Range(0, 1)]
         private float airControl = 1f;
+
+        [SerializeField, Min (0)] private float smoothing = 1f;
         
         private float inputX;
         private bool jumpInput;
@@ -21,34 +24,39 @@ namespace Game
 
         [SerializeField] private Rigidbody2D attachedRigidbody;
         [SerializeField] private SurfaceChecker surfaceCheck;
-
+        [SerializeField] private PlayerInput playerInput;
+        
         // This is just to show this in inspector
         [SerializeField]
         private SurfaceInfo surfaceInfo;
-        
+
+        private float damperValue;
         private void Update ()
         {
             if (!inputConsumed)
                 return;
             inputConsumed = false;
             
-            inputX = Input.GetAxisRaw ("Horizontal");
-            jumpInput = Input.GetAxisRaw("Jump") > 0.1f;
+            inputX = playerInput.GetMovement ().x;
+            jumpInput = playerInput.GetJump ();
         }
 
         private void FixedUpdate ()
         {   
             inputConsumed = true;
             var dt = Time.fixedDeltaTime;
-            var yVelocity = attachedRigidbody.velocity.y;
-
+            var currentVelocity = attachedRigidbody.velocity;
+            var airMult = surfaceInfo.OnGround ? 1f : airControl;
+            var xVelocity = Mathf.SmoothDamp (
+                currentVelocity.x, inputX * speed, ref damperValue, 
+                smoothing / airMult, speed / dt, dt);              
             
             var frameVelocity = new Vector2 (
-                inputX * speed, 
+                xVelocity, 
                 jumpInput ?  GetJumpHeight () : 0
                 );
 
-            frameVelocity.y += yVelocity;
+            frameVelocity.y += currentVelocity.y;
             
             surfaceInfo = surfaceCheck.CheckCollisions ();   
             attachedRigidbody.velocity = frameVelocity;

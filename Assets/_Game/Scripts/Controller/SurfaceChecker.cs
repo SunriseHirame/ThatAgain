@@ -9,7 +9,7 @@ namespace Game
         private const float SkinWidth = 0.01f;
         [SerializeField] private LayerMask surfaceMask;
         [SerializeField, Min (0)] private Vector2 scanDistance = new Vector2 (0.08f, 0.08f);
-        [SerializeField] private Rect CheckBounds;
+        [SerializeField] private Rect CheckBounds = new Rect (0, 1, 1, 2);
         [SerializeField, Min (1)] private int Resolution = 10;
 
         [SerializeField] private Rigidbody2D attachedRigidbody;
@@ -25,23 +25,23 @@ namespace Game
             var position = attachedRigidbody.position;
             var corners = new RectCorners (CheckBounds, position, SkinWidth);
             var collisionFlags = (CollisionFlags) 0;
-            
-            var checkVertical = new Vector2(
+
+            var checkVertical = new Vector2 (
                 0,
                 velocity.y + SkinWidth
             );
             var steps = (int) CheckBounds.width * Resolution;
-            var stepSize = new Vector2(CheckBounds.width / steps, 0);
+            var stepSize = new Vector2 (CheckBounds.width / steps, 0);
             collisionFlags |= Scan (
-                corners.TopLeft, corners.BottomLeft, checkVertical, 
+                corners.TopLeft, corners.BottomLeft, checkVertical,
                 steps, stepSize, CollisionFlags.Above, CollisionFlags.Below);
-            
-            var checkHorizontal = new Vector2(
+
+            var checkHorizontal = new Vector2 (
                 velocity.x + SkinWidth,
                 0
             );
             steps = (int) CheckBounds.height * Resolution;
-            stepSize = new Vector2(0, CheckBounds.height / steps);
+            stepSize = new Vector2 (0, CheckBounds.height / steps);
             collisionFlags |= Scan (
                 corners.BottomRight, corners.BottomLeft, checkHorizontal,
                 steps, stepSize, CollisionFlags.Right, CollisionFlags.Left);
@@ -53,12 +53,12 @@ namespace Game
         {
             var positiveOrigin = startPositive;
             var negativeOrigin = startNegative;
-            
+
             var direction = checkDistance.normalized;
             var maxDistance = checkDistance.magnitude;
 
             var flags = default (CollisionFlags);
-            
+
             for (var i = 0; i < steps; i++)
             {
                 Debug.DrawRay (negativeOrigin, -checkDistance);
@@ -75,13 +75,14 @@ namespace Game
                 {
                     flags |= negative;
                 }
-                
+
                 negativeOrigin += stepSize;
                 positiveOrigin += stepSize;
             }
+
             return flags;
         }
-        
+
         private void OnDrawGizmosSelected ()
         {
             var rectCorners = new RectCorners (CheckBounds, transform.position);
