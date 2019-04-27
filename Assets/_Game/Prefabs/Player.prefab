@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 6463505850204964863}
   - component: {fileID: 1160398617}
   - component: {fileID: 1160398626}
+  - component: {fileID: 8678968791299905871}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -303,7 +304,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6292241696685414716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.807, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6292241696525572285}
@@ -488,6 +489,22 @@ MonoBehaviour:
   positionRecorder: {fileID: 6463505850204964863}
   timeTracker: {fileID: 1160398617}
   name: '"Jere"'
+--- !u!70 &8678968791299905871
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6292241696685414716}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
 --- !u!1 &6511766722858956663
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,7 +701,7 @@ PrefabInstance:
     - target: {fileID: 3987361107544326343, guid: 374e94f63384ad4468275f8cc44743da,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 3987361107544326343, guid: 374e94f63384ad4468275f8cc44743da,
         type: 3}
@@ -731,6 +748,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3987361107544326343, guid: 374e94f63384ad4468275f8cc44743da,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5494665
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987361107544326343, guid: 374e94f63384ad4468275f8cc44743da,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5494665
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987361107544326343, guid: 374e94f63384ad4468275f8cc44743da,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5494665
+      objectReference: {fileID: 0}
+    - target: {fileID: 3987361107544326345, guid: 374e94f63384ad4468275f8cc44743da,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 48b01cc91be000b4fabfc87dc43646ec,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 374e94f63384ad4468275f8cc44743da, type: 3}
 --- !u!4 &6292241696525572285 stripped
