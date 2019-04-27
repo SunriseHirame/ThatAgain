@@ -13,7 +13,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.019192874, y: 1.0928197}
+  m_Offset: {x: 0.019192874, y: -0.1802972}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -24,7 +24,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4395677, y: 1.682533}
+  m_Size: {x: 0.735914, y: 3.3914828}
   m_EdgeRadius: 0
 --- !u!114 &1087404348
 MonoBehaviour:
@@ -38,12 +38,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca208d1a01e4994e98d367d1da5253f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeTracker: {fileID: 0}
+  timeTracker: {fileID: 1087404358}
   deathParticleSystem: {fileID: 0}
   ragdoll: {fileID: 5435878134779005206, guid: 766bb37d75e05aa468a5a32442477a9f, type: 3}
-  graphics: {fileID: 0}
-  playerData: {fileID: 0}
-  zoom: {fileID: 0}
+  graphics: {fileID: 2841094981638181331}
+  playerData: {fileID: 1087404357}
+  zoom: {fileID: 1087404356}
   layeredAudioPlayer: {fileID: 0}
 --- !u!114 &1087404349
 MonoBehaviour:
@@ -60,7 +60,7 @@ MonoBehaviour:
   minJumpHeight: 3.5
   maxJumpHeight: 6
   jumpCooldown: 0.1
-  attachedRigidbody: {fileID: 0}
+  attachedRigidbody: {fileID: 7462322060841821784}
 --- !u!114 &1087404350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,10 +79,10 @@ MonoBehaviour:
   airControl: 0.538
   smoothing: 0.12
   wallClingTime: 0.25
-  attachedRigidbody: {fileID: 0}
-  surfaceCheck: {fileID: 0}
-  playerInput: {fileID: 0}
-  jump: {fileID: 0}
+  attachedRigidbody: {fileID: 7462322060841821784}
+  surfaceCheck: {fileID: 1087404351}
+  playerInput: {fileID: 1087404352}
+  jump: {fileID: 1087404349}
 --- !u!114 &1087404351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,12 +101,12 @@ MonoBehaviour:
   scanDistance: {x: 0.1, y: 0.1}
   CheckBounds:
     serializedVersion: 2
-    x: 0.02
-    y: 1.09
+    x: 0
+    y: -0.11
     width: 0.4
-    height: 1.64
+    height: 1.91
   Resolution: 20
-  attachedRigidbody: {fileID: 0}
+  attachedRigidbody: {fileID: 7462322060841821784}
 --- !u!114 &1087404352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,18 +133,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89d6e92b68167a48a2afeb582e2ed98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Head: {fileID: 0}
-  Body: {fileID: 0}
-  ArmUpperLeft: {fileID: 0}
-  ArmLowerLeft: {fileID: 0}
-  ArmUpperRight: {fileID: 0}
-  ArmLowerRight: {fileID: 0}
-  LegUpperLeft: {fileID: 0}
-  LegLowerLeft: {fileID: 0}
-  FootLeft: {fileID: 0}
-  LegUpperRight: {fileID: 0}
-  LegLowerRight: {fileID: 0}
-  FootRight: {fileID: 0}
+  Head: {fileID: 2841094981638181330}
+  Body: {fileID: 2841094981638181330}
+  ArmUpperLeft: {fileID: 2841094981638181330}
+  ArmLowerLeft: {fileID: 2841094981638181330}
+  ArmUpperRight: {fileID: 2841094981638181330}
+  ArmLowerRight: {fileID: 2841094981638181330}
+  LegUpperLeft: {fileID: 2841094981638181330}
+  LegLowerLeft: {fileID: 2841094981638181330}
+  FootLeft: {fileID: 2841094981638181330}
+  LegUpperRight: {fileID: 2841094981638181330}
+  LegLowerRight: {fileID: 2841094981638181330}
+  FootRight: {fileID: 2841094981638181330}
 --- !u!114 &1087404355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,8 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c9e51b8f82d6f41a36bef92d68d1be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionRecorder: {fileID: 0}
-  timeTracker: {fileID: 0}
+  positionRecorder: {fileID: 1087404348}
+  timeTracker: {fileID: 1087404358}
   name: '"Jere"'
 --- !u!114 &1087404358
 MonoBehaviour:
@@ -296,6 +296,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 834002561238908573, guid: 766bb37d75e05aa468a5a32442477a9f,
         type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 9a28dcea343e500469ff86a8f37260cb, type: 2}
+    - target: {fileID: 834002561238908573, guid: 766bb37d75e05aa468a5a32442477a9f,
+        type: 3}
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
@@ -304,11 +309,6 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 834002561238908573, guid: 766bb37d75e05aa468a5a32442477a9f,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 9a28dcea343e500469ff86a8f37260cb, type: 2}
     - target: {fileID: 2631515691475821052, guid: 766bb37d75e05aa468a5a32442477a9f,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -404,6 +404,18 @@ PrefabInstance:
 --- !u!1 &2841094981638181331 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5435878134779005206, guid: 766bb37d75e05aa468a5a32442477a9f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7790530856348588229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2841094981638181330 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5435878134779005207, guid: 766bb37d75e05aa468a5a32442477a9f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7790530856348588229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &7462322060841821784 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 834002561238908573, guid: 766bb37d75e05aa468a5a32442477a9f,
     type: 3}
   m_PrefabInstance: {fileID: 7790530856348588229}
   m_PrefabAsset: {fileID: 0}
