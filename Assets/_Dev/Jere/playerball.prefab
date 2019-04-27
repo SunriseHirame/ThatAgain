@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4393003557223018034}
   - component: {fileID: 4393003557223018035}
-  - component: {fileID: 8485580700885306946}
   - component: {fileID: 4393003557223018036}
   - component: {fileID: 4393003557223018037}
   - component: {fileID: 4393003557223018033}
+  - component: {fileID: 1737710758}
+  - component: {fileID: 1737710759}
   m_Layer: 0
   m_Name: playerball
   m_TagString: Untagged
@@ -83,21 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8485580700885306946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4393003557223018038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91e0b0f4fdae4284fb76aafb45345c6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerOne: 1
-  jumpForce: 1
-  speed: 1
 --- !u!58 &4393003557223018036
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -147,3 +133,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca208d1a01e4994e98d367d1da5253f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1737710758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4393003557223018038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5375cb0e978b13b4c8c698b6d726daf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  jumpHeight: 5
+  airControl: 1
+  attachedRigidbody: {fileID: 4393003557223018037}
+  surfaceCheck: {fileID: 1737710759}
+--- !u!114 &1737710759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4393003557223018038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03040481a90259a48b860e6c270f75f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceMask:
+    serializedVersion: 2
+    m_Bits: 0
+  scanDistance: {x: 0.08, y: 0.08}
+  CheckBounds:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  Resolution: 10
+  attachedRigidbody: {fileID: 4393003557223018037}

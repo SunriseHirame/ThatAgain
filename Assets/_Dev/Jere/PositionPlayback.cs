@@ -7,6 +7,7 @@ public class PositionPlayback : MonoBehaviour
     
     private Vector3[] positionHistory;
     private int positionIter;
+    private bool pong;
 
     private void Start()
     {
@@ -21,14 +22,31 @@ public class PositionPlayback : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (positionIter > 0)
+        if (pong)
         {
-            positionIter--;
-            transform.position = positionHistory[positionIter];
+            if (positionIter < positionHistory.Length-1)
+            {
+                positionIter++;
+                transform.position = positionHistory[positionIter];
+            }
+            else
+            {
+                pong = false;
+                //gameObject.SetActive(false);
+            }
         }
         else
         {
-            gameObject.SetActive(false);
+            if (positionIter > 0)
+            {
+                positionIter--;
+                transform.position = positionHistory[positionIter];
+            }
+            else
+            {
+                pong = true;
+                //gameObject.SetActive(false);
+            }
         }
     }
 
