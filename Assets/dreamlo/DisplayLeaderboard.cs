@@ -5,6 +5,8 @@ using UnityEngine;
 [ExecuteAlways]
 public class DisplayLeaderboard : MonoBehaviour
 {
+    [SerializeField] private DreamloBoard boardToLoad;
+    
     [SerializeField]
     private Transform container;
 
