@@ -102,11 +102,11 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -8960674365225487790, guid: c222e773db4c424448c1a51ac6f2f975,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 923eb45428c09dd4698df5542fc2c79c, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.7
   m_Pitch: 1
-  Loop: 0
-  Mute: 0
+  Loop: 1
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 0
@@ -230,11 +230,11 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -8960674365225487790, guid: c222e773db4c424448c1a51ac6f2f975,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 44b51c316f4d99e40b78107158a2fc7c, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.7
   m_Pitch: 1
-  Loop: 0
-  Mute: 0
+  Loop: 1
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 0
@@ -358,11 +358,11 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -8960674365225487790, guid: c222e773db4c424448c1a51ac6f2f975,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 36faa509b75e89449a3723487eaa4731, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.7
   m_Pitch: 1
-  Loop: 0
-  Mute: 0
+  Loop: 1
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 0
@@ -486,14 +486,14 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -8960674365225487790, guid: c222e773db4c424448c1a51ac6f2f975,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 8edc4d66107ce8247894406aad194a9c, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
+  m_PlayOnAwake: 1
+  m_Volume: 0.7
   m_Pitch: 1
-  Loop: 0
-  Mute: 0
+  Loop: 1
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -614,11 +614,11 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -8960674365225487790, guid: c222e773db4c424448c1a51ac6f2f975,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 2817c5ac690d304428747a9fe13237e5, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.7
   m_Pitch: 1
-  Loop: 0
-  Mute: 0
+  Loop: 1
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 0
@@ -742,11 +742,11 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -8960674365225487790, guid: c222e773db4c424448c1a51ac6f2f975,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: d8da9bc47852c5b49819e3aa0dd9c923, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.7
   m_Pitch: 1
-  Loop: 0
-  Mute: 0
+  Loop: 1
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 0

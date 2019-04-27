@@ -7,7 +7,7 @@ public class LayeredAudioPlayer : MonoBehaviour
 
     private void Awake ()
     {
-        ActivateNext ();
+        Reset ();
     }
 
     public void Reset ()
@@ -17,23 +17,32 @@ public class LayeredAudioPlayer : MonoBehaviour
         {
             foreach (var s in source.sources)
             {
-                s.Stop ();
+                s.mute = true;
             }
         }
 
         ActivateNext ();
     }
 
+    private void Update ()
+    {
+        if (Input.GetKeyDown (KeyCode.O))
+            ActivateNext ();
+        if (Input.GetKeyDown (KeyCode.P))
+            Reset ();
+    }
+
     public void ActivateNext ()
     {
+        print ("Activate");
         currentCombo++;
         if (currentCombo >= sources.Length)
             return;
 
         foreach (var s in sources[currentCombo].sources)
         {
-            if (!s.isPlaying)
-                s.Play ();
+            print (s.name);
+            s.mute = false;
         }    
     }
 
