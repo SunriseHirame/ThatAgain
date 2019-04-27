@@ -6,6 +6,7 @@ using UnityEngine;
 public class HealthController : MonoBehaviour
 {
     private List<GameObject> healthObjects = new List<GameObject>();
+    [SerializeField] private Canvas deathCanvas;
 
     // Start is called before the first frame update
     private void Start()
@@ -18,15 +19,15 @@ public class HealthController : MonoBehaviour
 
     private void OnEnable()
     {
-        PositionRecorder.OnPlayerDied += LoseHealth;
+        PositionRecorder.OnPlayerLoseHealth += LoseHealth;
     }
 
     private void OnDisable()
     {
-        PositionRecorder.OnPlayerDied -= LoseHealth;
+        PositionRecorder.OnPlayerLoseHealth -= LoseHealth;
     }
 
-    public void LoseHealth()
+    private void LoseHealth()
     {
         for (var i = healthObjects.Count -1; i > -1; i--)
         {
@@ -39,8 +40,8 @@ public class HealthController : MonoBehaviour
             healthObjects[i].GetComponent<HealthObject>().UiLoseHealth();
             if (i == 0)
             {
-                print("YOU DIED!");
-                //Last Health, do something epic
+                deathCanvas.GetComponent<UIController>().DisplayCanvas();
+                GetComponent<UIController>().HideCanvas();
             }
             break;
         }

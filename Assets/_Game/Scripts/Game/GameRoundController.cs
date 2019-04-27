@@ -32,6 +32,7 @@ namespace Game
 
         public void EndGame()
         {
+            print("YOU DIED");
             gameEnded = true;
         }
 
