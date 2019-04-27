@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Game;
 using UnityEngine;
 
 public class HealthController : MonoBehaviour
@@ -15,6 +16,16 @@ public class HealthController : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        PositionRecorder.OnPlayerDied += LoseHealth;
+    }
+
+    private void OnDisable()
+    {
+        PositionRecorder.OnPlayerDied -= LoseHealth;
+    }
+
     public void LoseHealth()
     {
         for (var i = healthObjects.Count -1; i > -1; i--)
@@ -28,6 +39,7 @@ public class HealthController : MonoBehaviour
             healthObjects[i].GetComponent<HealthObject>().UiLoseHealth();
             if (i == 0)
             {
+                print("YOU DIED!");
                 //Last Health, do something epic
             }
             break;
