@@ -11,6 +11,7 @@ namespace Game
         //private GhostSpawner goal;
 
         private List<PositionRecorder> players = new List<PositionRecorder> ();
+        private bool gameEnded;
 
         public int playerCount;
         public int finishedPlayers;
@@ -18,10 +19,20 @@ namespace Game
 
         void Update ()
         {
-            if (playerCount > 0 && EveryoneFinished ())
+            if (playerCount > 0 && EveryoneFinished () && !gameEnded)
             {
                 StartRound ();
             }
+        }
+
+        private void Start()
+        {
+            gameEnded = false;
+        }
+
+        public void EndGame()
+        {
+            gameEnded = true;
         }
 
         public void StartRound ()
@@ -78,6 +89,7 @@ namespace Game
         private static void Init ()
         {
            DontDestroyOnLoad(Instance = new GameObject ("GameController").AddComponent<GameRoundController> ());
+           
         }
     }
 }

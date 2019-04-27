@@ -12,6 +12,7 @@ namespace Game
         [SerializeField] private GameObject ragdoll;
         [SerializeField] private GameObject graphics;
         [SerializeField] private PlayerData playerData;
+        [SerializeField] private DeathZoom zoom;
         private List<Vector3> recordedPos = new List<Vector3> ();
         private Vector3 startPosition;
         private Rigidbody2D rb;
@@ -38,6 +39,7 @@ namespace Game
 
         public void ReturnToStartPosition ()
         {
+            zoom.ResetZoom();
             graphics.SetActive(true);
             dead = false;
             finished = false;
@@ -53,7 +55,12 @@ namespace Game
             DeathCount++;
             DeathEffects();
             Invoke(nameof(Disable),3);
+            
             OnPlayerDied?.Invoke();
+            if (DeathCount >= 5)
+            {
+                GameRoundController.Instance.EndGame();
+            }
         }
 
         private void DeathEffects()
@@ -61,6 +68,8 @@ namespace Game
             graphics.SetActive(false);
             deathParticleSystem.GetComponent<ParticleSystem>().Play();
             GameObject rag = Instantiate(ragdoll, transform.position+Vector3.up, quaternion.identity);
+            zoom.target = rag.transform;
+            zoom.Zoom();
             rag.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1.0f,1.0f)*500f,Random.Range(-1.0f,1.0f)*500f);
         }
         
