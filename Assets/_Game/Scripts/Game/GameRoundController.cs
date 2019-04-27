@@ -18,7 +18,7 @@ namespace Game
 
         void Update ()
         {
-            if (EveryoneFinished ())
+            if (playerCount > 0 && EveryoneFinished ())
             {
                 StartRound ();
             }
@@ -77,7 +77,7 @@ namespace Game
         [RuntimeInitializeOnLoadMethod (RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Init ()
         {
-            Instance = new GameObject ("GameController").AddComponent<GameRoundController> ();
+           DontDestroyOnLoad(Instance = new GameObject ("GameController").AddComponent<GameRoundController> ());
         }
     }
 }
