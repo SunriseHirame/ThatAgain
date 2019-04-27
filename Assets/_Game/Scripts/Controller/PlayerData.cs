@@ -12,7 +12,9 @@ public class PlayerData : MonoBehaviour
 
     public void PushScore()
     {
+        name = PlayerPrefs.GetString("PlayerName", "NO_PLAYER_NAME_ADDED_EVERYTHINGS_BROKEN");
         DreamloLeaderBoard.Instance.AddScore(name,positionRecorder.FinishCount,(int)(timeTracker.totalTime*1000));
+        print("Player data saved. Name: " + name + " Finish count: " + positionRecorder.FinishCount);
     }
 
 }

@@ -12,6 +12,7 @@ namespace Game
         [SerializeField] private LayerMask hitMask;    
         [SerializeField] private LineRenderer lineRenderer;
         [SerializeField] private ParticleSystem hitEffect;
+        [SerializeField] private float KillTime = 2f;
             
         private void Update()
         {

@@ -991,11 +991,6 @@ PrefabInstance:
       propertyPath: minJumpHeight
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 6463505850204964863, guid: b784b77b58353814fa008d8bb23c20b6,
-        type: 3}
-      propertyPath: timeTracker
-      value: 
-      objectReference: {fileID: 1160398617}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b784b77b58353814fa008d8bb23c20b6, type: 3}
 --- !u!1 &341244242
@@ -3417,31 +3412,13 @@ Transform:
   m_Father: {fileID: 1846390997}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1160398616 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6292241696685414716, guid: b784b77b58353814fa008d8bb23c20b6,
-    type: 3}
-  m_PrefabInstance: {fileID: 315635921}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1160398617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1160398616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d722561cb8604004690f69a690b62637, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1160398619 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6463505850204964863, guid: b784b77b58353814fa008d8bb23c20b6,
     type: 3}
   m_PrefabInstance: {fileID: 315635921}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1160398616}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ca208d1a01e4994e98d367d1da5253f, type: 3}
