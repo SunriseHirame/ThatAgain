@@ -11,6 +11,7 @@ namespace Game
         private Rigidbody2D rb;
         private bool dead;
         private bool finished;
+        public static System.Action OnLevelFinished;
 
         public int DeathCount { get; private set; }
         public int FinishCount { get; private set; }
@@ -59,6 +60,7 @@ namespace Game
             ClearRecordedPosition ();
             gameObject.SetActive (false);
             FinishCount++;
+            OnLevelFinished?.Invoke();
         }
 
         public bool IsFinished ()
