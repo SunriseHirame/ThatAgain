@@ -3207,8 +3207,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitMask:
     serializedVersion: 2
-    m_Bits: 0
-  lineRenderer: {fileID: 0}
+    m_Bits: 256
+  lineRenderer: {fileID: 660474052}
 --- !u!58 &2029297096
 CircleCollider2D:
   m_ObjectHideFlags: 0
