@@ -33,7 +33,7 @@ public class DisplayLeaderboard : MonoBehaviour
             displayElements[i].gameObject.SetActive (i < shownElements);
             
             if (i < shownElements)
-                displayElements[i].SetValues (sorted[i].playerName, (sorted[i].seconds), sorted[i].score);
+                displayElements[i].SetValues (sorted[i].playerName, (sorted[i].seconds), sorted[i].score, (i+1).ToString());
         }
     }
 }
