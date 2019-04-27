@@ -48,8 +48,8 @@ namespace Game
             deadPlayers = 0;
             foreach (PositionRecorder player in players) //reset all players
             {
-                player.ReturnToStartPosition ();
                 player.gameObject.SetActive (true);
+                player.ReturnToStartPosition ();
             }
         }
 
