@@ -226,6 +226,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &383980054 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 383980054, guid: b784b77b58353814fa008d8bb23c20b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 6292241697498187499}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &408958128
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,7 +648,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1592386556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.4, y: 1, z: -56.01}
+  m_LocalPosition: {x: 7.8, y: 2.6, z: -56.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1823,7 +1829,7 @@ PrefabInstance:
     - target: {fileID: 6292241696685414707, guid: b784b77b58353814fa008d8bb23c20b6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.17
       objectReference: {fileID: 0}
     - target: {fileID: 6292241696685414707, guid: b784b77b58353814fa008d8bb23c20b6,
         type: 3}
@@ -1875,10 +1881,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6292241696685414705, guid: b784b77b58353814fa008d8bb23c20b6,
+    - target: {fileID: 6292241696685414704, guid: b784b77b58353814fa008d8bb23c20b6,
         type: 3}
-      propertyPath: idleDrag
-      value: 4
+      propertyPath: boxCollider
+      value: 
+      objectReference: {fileID: 383980054}
+    - target: {fileID: 6292241696685414704, guid: b784b77b58353814fa008d8bb23c20b6,
+        type: 3}
+      propertyPath: CheckBounds.y
+      value: 1.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292241696685414704, guid: b784b77b58353814fa008d8bb23c20b6,
+        type: 3}
+      propertyPath: CheckBounds.height
+      value: 1.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292241696685414704, guid: b784b77b58353814fa008d8bb23c20b6,
+        type: 3}
+      propertyPath: CheckBounds.width
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292241696685414704, guid: b784b77b58353814fa008d8bb23c20b6,
+        type: 3}
+      propertyPath: CheckBounds.x
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292241696685414704, guid: b784b77b58353814fa008d8bb23c20b6,
+        type: 3}
+      propertyPath: scanDistance.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292241696685414704, guid: b784b77b58353814fa008d8bb23c20b6,
+        type: 3}
+      propertyPath: scanDistance.x
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b784b77b58353814fa008d8bb23c20b6, type: 3}

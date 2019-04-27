@@ -2,10 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class DeathZoom : MonoBehaviour
 {
-    [SerializeField]private Camera c;
+    private Camera mainCamera;
     public Transform target;
     private float size;
     private Vector3 startPos;
@@ -13,8 +14,9 @@ public class DeathZoom : MonoBehaviour
     
     private void Start()
     {
-        startPos = c.transform.position;
-        size = c.orthographicSize;
+        mainCamera = Camera.main;
+        startPos = mainCamera.transform.position;
+        size = mainCamera.orthographicSize;
     }
 
     public void Zoom()
@@ -26,9 +28,9 @@ public class DeathZoom : MonoBehaviour
     {
         for (float i = 0; i < 1.0; i += Time.deltaTime/2.0f)
         {
-            c.orthographicSize = Mathf.Lerp(c.orthographicSize, size / 10.0f, i);
-            c.transform.position = Vector3.Lerp(c.transform.position, target.position, i);
-            c.transform.position = new Vector3(c.transform.position.x,c.transform.position.y,-10);
+            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, size / 10.0f, i);
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, target.position, i);
+            mainCamera.transform.position = new Vector3(mainCamera.transform.position.x,mainCamera.transform.position.y,-10);
             yield return null;
         }
         StartCoroutine(ZoomBack());
@@ -43,9 +45,9 @@ public class DeathZoom : MonoBehaviour
     {
         for (float i = 0; i < 1.0; i += Time.deltaTime)
         {
-            c.orthographicSize = Mathf.Lerp(c.orthographicSize, size, i);
-            c.transform.position = Vector3.Lerp(c.transform.position, startPos, i);
-            c.transform.position = new Vector3(c.transform.position.x,c.transform.position.y,-10);
+            mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, size, i);
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, startPos, i);
+            mainCamera.transform.position = new Vector3(mainCamera.transform.position.x,mainCamera.transform.position.y,-10);
             yield return null;
         }
     }

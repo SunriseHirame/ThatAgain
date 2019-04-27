@@ -31,9 +31,9 @@ namespace Game
             // Vertical resolving
             var checkVertical = new Vector2 (
                 0,
-                maxSurfaceDistance.y + SkinWidth
+                maxSurfaceDistance.x + SkinWidth
             );
-            var steps = (int) CheckBounds.width * Resolution;
+            var steps = (int) (CheckBounds.width * Resolution);
             var stepSize = new Vector2 (CheckBounds.width / steps, 0);
             collisionFlags |= Scan (
                 corners.TopLeft, corners.BottomLeft, checkVertical,
@@ -49,7 +49,7 @@ namespace Game
                 maxSurfaceDistance.x + SkinWidth,
                 0
             );
-            steps = (int) CheckBounds.height * Resolution;
+            steps = (int) (CheckBounds.height * Resolution);
             stepSize = new Vector2 (0, CheckBounds.height / steps);
             collisionFlags |= Scan (
                 corners.BottomRight, corners.BottomLeft, checkHorizontal,
