@@ -7,7 +7,7 @@ namespace Game
     {
         [SerializeField] private float minJumpHeight = 1;
         [SerializeField] private float maxJumpHeight = 5;
-        [SerializeField] private float jumpCooldown = 0.1f;
+        [SerializeField] private float jumpCooldown = 0.05f;
         [SerializeField] private int jumpCount = 0;
         
         [SerializeField]
@@ -25,6 +25,11 @@ namespace Game
             {
                 jumpCount = 0;
                 return false;
+            }
+
+            if (!onGround)
+            {
+                jumpCooldown = 0;
             }
             
             //gravity = -(2 * maxJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
