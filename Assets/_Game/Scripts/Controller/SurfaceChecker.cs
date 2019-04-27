@@ -1,5 +1,4 @@
 ﻿using System.Runtime.CompilerServices;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace Game
@@ -16,40 +15,56 @@ namespace Game
 
         public SurfaceInfo CheckCollisions ()
         {
-            var collisionFlags = ScanSurfaces (scanDistance);
-            return new SurfaceInfo (collisionFlags, false);
+            var collisionFlags = ScanSurfaces (scanDistance, out var surfaceAngle);
+            return new SurfaceInfo (collisionFlags, surfaceAngle);
         }
 
-        private CollisionFlags ScanSurfaces (Vector2 velocity)
+        private CollisionFlags ScanSurfaces (Vector2 maxSurfaceDistance, out SurfaceAngles surfaceAngle)
         {
+            var positiveAngle = 0f;
+            var negativeAngle = 0f;
+            
             var position = attachedRigidbody.position;
             var corners = new RectCorners (CheckBounds, position, SkinWidth);
             var collisionFlags = (CollisionFlags) 0;
 
+            // Vertical resolving
             var checkVertical = new Vector2 (
                 0,
-                velocity.y + SkinWidth
+                maxSurfaceDistance.y + SkinWidth
             );
             var steps = (int) CheckBounds.width * Resolution;
             var stepSize = new Vector2 (CheckBounds.width / steps, 0);
             collisionFlags |= Scan (
                 corners.TopLeft, corners.BottomLeft, checkVertical,
-                steps, stepSize, CollisionFlags.Above, CollisionFlags.Below);
+                steps, stepSize, CollisionFlags.Above, CollisionFlags.Below, 
+                ref negativeAngle, ref positiveAngle);
 
+            // Assign vertical values
+            surfaceAngle.GroundAngle = negativeAngle;
+            surfaceAngle.CeilingAngle = positiveAngle;
+            
+            // Horizontal resolving
             var checkHorizontal = new Vector2 (
-                velocity.x + SkinWidth,
+                maxSurfaceDistance.x + SkinWidth,
                 0
             );
             steps = (int) CheckBounds.height * Resolution;
             stepSize = new Vector2 (0, CheckBounds.height / steps);
             collisionFlags |= Scan (
                 corners.BottomRight, corners.BottomLeft, checkHorizontal,
-                steps, stepSize, CollisionFlags.Right, CollisionFlags.Left);
+                steps, stepSize, CollisionFlags.Right, CollisionFlags.Left, 
+                ref negativeAngle, ref positiveAngle);
+
+            // Assign vertical values
+            surfaceAngle.LeftWallAngle = negativeAngle;
+            surfaceAngle.RightWallAngle = positiveAngle;
             return collisionFlags;
         }
 
         private CollisionFlags Scan (Vector2 startPositive, Vector2 startNegative, Vector2 checkDistance,
-            int steps, Vector2 stepSize, CollisionFlags positive, CollisionFlags negative)
+            int steps, Vector2 stepSize, CollisionFlags positive, CollisionFlags negative,
+            ref float negativeAngle, ref float positiveAngle)
         {
             var positiveOrigin = startPositive;
             var negativeOrigin = startNegative;
@@ -68,18 +83,24 @@ namespace Game
                 if (rayHitUp != default (RaycastHit2D))
                 {
                     flags |= positive;
+                    var angle = Vector3.Angle (rayHitUp.normal, Vector3.up);
+                    if (angle > positiveAngle)
+                        positiveAngle = angle;
                 }
 
                 var rayHitDown = Physics2D.Raycast (negativeOrigin, -direction, maxDistance, surfaceMask);
                 if (rayHitDown != default (RaycastHit2D))
                 {
                     flags |= negative;
+                    var angle = Vector3.Angle (rayHitDown.normal, Vector3.up);
+                    if (angle > negativeAngle)
+                        negativeAngle = angle;
                 }
 
                 negativeOrigin += stepSize;
                 positiveOrigin += stepSize;
             }
-
+            
             return flags;
         }
 
@@ -127,16 +148,24 @@ namespace Game
     public struct SurfaceInfo
     {
         public readonly CollisionFlags Collisions;
-        public readonly bool OnSlope;
+        public readonly SurfaceAngles SurfaceAngles;
 
         public bool OnGround => Collisions.HasFlag (CollisionFlags.Below);
         public bool OnWall => Collisions.HasFlag (CollisionFlags.Left) || Collisions.HasFlag (CollisionFlags.Right);
 
-        public SurfaceInfo (CollisionFlags collisions, bool onSlope)
+        public SurfaceInfo (CollisionFlags collisions, SurfaceAngles surfaceAngles)
         {
             Collisions = collisions;
-            OnSlope = onSlope;
+            SurfaceAngles = surfaceAngles;
         }
+    }
+
+    public struct SurfaceAngles
+    {
+        public float GroundAngle;
+        public float CeilingAngle;
+        public float RightWallAngle;
+        public float LeftWallAngle;
     }
 
     [System.Flags]

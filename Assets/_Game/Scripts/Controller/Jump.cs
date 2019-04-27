@@ -5,16 +5,21 @@ namespace Game
 {
     public class Jump : MonoBehaviour
     {
-        [SerializeField] private float minJumpHeight = 1;
+        [SerializeField] private float minJumpHeight = 3.5f;
         [SerializeField] private float maxJumpHeight = 5;
         [SerializeField] private float jumpCooldown = 0.05f;
-        [SerializeField] private int jumpCount = 0;
         
         [SerializeField]
         private Rigidbody2D attachedRigidbody;
 
         private float lastJumpTime;
-        
+        private int jumpCount;
+
+        public void ResetJumpCounter ()
+        {
+            jumpCount = 0;
+        }
+
         [MethodImpl (MethodImplOptions.AggressiveInlining)]
         public bool GetJumpVelocity (bool onGround, ref Vector2 velocity)
         {
@@ -44,7 +49,7 @@ namespace Game
             
             var timeToJumpApex = Mathf.Sqrt (-2 * maxJumpHeight / gravity);
             var maxJumpVelocity = Mathf.Abs (gravity) * timeToJumpApex;
-            velocity.y = maxJumpVelocity; 
+            velocity.y = Mathf.Clamp (velocity.y + maxJumpVelocity, minJumpHeight, maxJumpVelocity);
             return true;
         }
 
