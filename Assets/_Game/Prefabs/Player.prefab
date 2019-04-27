@@ -419,8 +419,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  moveDrag: 0
+  idleDrag: 1
   airControl: 0.538
   smoothing: 0.12
+  wallClingTime: 0.25
   attachedRigidbody: {fileID: 6292241696685414706}
   surfaceCheck: {fileID: 6292241696685414704}
   playerInput: {fileID: 4713219619639991258}
@@ -437,10 +440,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921c8da0a87ff7e4ebb4b6d57e4936a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minJumpHeight: 5
-  maxJumpHeight: 14
+  minJumpHeight: 3.5
+  maxJumpHeight: 6
   jumpCooldown: 0.1
-  jumpCount: 0
   attachedRigidbody: {fileID: 6292241696685414706}
 --- !u!114 &6463505850204964863
 MonoBehaviour:
