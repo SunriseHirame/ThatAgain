@@ -51,7 +51,6 @@ namespace Game
 
         public void Die ()
         {
-            ClearRecordedPosition ();
             dead = true;
             DeathCount++;
             DeathEffects();
@@ -91,7 +90,6 @@ namespace Game
             timeTracker.SetTime();
             finished = true;
             GameRoundController.Instance.PlayerFinished (); //count finished players
-            ClearRecordedPosition ();
             gameObject.SetActive (false);
             FinishCount++;
             OnLevelFinished?.Invoke();
