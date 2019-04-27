@@ -8,6 +8,7 @@ public class PositionRecorder : MonoBehaviour
     private List<Vector3> recordedPos = new List<Vector3>();
     private Vector3 startPosition;
     private Rigidbody2D rb;
+    private bool dead;
 
     private void Start()
     {
@@ -23,9 +24,20 @@ public class PositionRecorder : MonoBehaviour
 
     public void ReturnToStartPosition()
     {
+        dead = false;
         rb.velocity = Vector2.zero;
         transform.position = startPosition;
         ClearRecordedPosition();
+    }
+
+    public void Die()
+    {
+        dead = true;
+    }
+
+    public bool IsDead()
+    {
+        return dead;
     }
     
     public Vector3[] GetPositionHistory()

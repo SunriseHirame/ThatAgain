@@ -19,13 +19,17 @@ namespace Game
         
         private float inputX;
         private bool jumpInput;
-        
         private bool inputConsumed;
+        
 
         [SerializeField] private Rigidbody2D attachedRigidbody;
         [SerializeField] private SurfaceChecker surfaceCheck;
         [SerializeField] private PlayerInput playerInput;
         
+
+        private float fallMultiplier = 2.5f;
+        private float lowJumpMultiplier = 1.5f;
+
         // This is just to show this in inspector
         [SerializeField]
         private SurfaceInfo surfaceInfo;
@@ -49,7 +53,16 @@ namespace Game
             var airMult = surfaceInfo.OnGround ? 1f : airControl;
             var xVelocity = Mathf.SmoothDamp (
                 currentVelocity.x, inputX * speed, ref damperValue, 
-                smoothing / airMult, speed / dt, dt);              
+                smoothing / airMult, speed / dt, dt);      
+                        
+            if (currentVelocity.y < 0)
+            {
+                currentVelocity.y += Vector2.up.y * Physics2D.gravity.y * (fallMultiplier -1) * Time.deltaTime;
+            } 
+            else if(!Input.GetButtonDown("Jump"))
+            {
+                currentVelocity.y += Vector2.up.y * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            }
             
             var frameVelocity = new Vector2 (
                 xVelocity, 
@@ -65,7 +78,9 @@ namespace Game
         [MethodImpl (MethodImplOptions.AggressiveInlining)]
         private float GetJumpHeight ()
         {
-            return Mathf.Sqrt (jumpHeight * -2 * Physics2D.gravity.y * Time.fixedDeltaTime);
+            if(surfaceInfo.OnGround)
+                return Mathf.Sqrt (jumpHeight * -10 * Physics2D.gravity.y * Time.fixedDeltaTime);
+            return 0;
         }
 
     }

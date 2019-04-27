@@ -6,16 +6,22 @@ using UnityEngine;
 
 public class GhostSpawner : MonoBehaviour
 {
+    public static GhostSpawner Instance { get; private set; }
+    
     [SerializeField] private GameObject ghost;
     private List<PositionPlayback> ghosts = new List<PositionPlayback>();
 
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
         GameRoundController.Instance.SetGoalObject(this);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other) //player enters finish line
     {
         PositionRecorder player = other.GetComponent<PositionRecorder>();
         
