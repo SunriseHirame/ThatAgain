@@ -26,6 +26,10 @@ public class PositionPlayback : MonoBehaviour
             positionIter--;
             transform.position = positionHistory[positionIter];
         }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public void ResetGhost()
