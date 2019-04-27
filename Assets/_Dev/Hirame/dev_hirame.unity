@@ -1926,36 +1926,6 @@ PrefabInstance:
       propertyPath: boxCollider
       value: 
       objectReference: {fileID: 383980054}
-    - target: {fileID: 6292241696685414704, guid: b784b77b58353814fa008d8bb23c20b6,
-        type: 3}
-      propertyPath: CheckBounds.y
-      value: 1.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 6292241696685414704, guid: b784b77b58353814fa008d8bb23c20b6,
-        type: 3}
-      propertyPath: CheckBounds.height
-      value: 1.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 6292241696685414704, guid: b784b77b58353814fa008d8bb23c20b6,
-        type: 3}
-      propertyPath: CheckBounds.width
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6292241696685414704, guid: b784b77b58353814fa008d8bb23c20b6,
-        type: 3}
-      propertyPath: CheckBounds.x
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 6292241696685414704, guid: b784b77b58353814fa008d8bb23c20b6,
-        type: 3}
-      propertyPath: scanDistance.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6292241696685414704, guid: b784b77b58353814fa008d8bb23c20b6,
-        type: 3}
-      propertyPath: scanDistance.x
-      value: 0.1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b784b77b58353814fa008d8bb23c20b6, type: 3}
 --- !u!1001 &7472231558023912093
