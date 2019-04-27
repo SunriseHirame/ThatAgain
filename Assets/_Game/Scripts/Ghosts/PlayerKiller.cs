@@ -13,8 +13,6 @@ public class PlayerKiller : MonoBehaviour
             if (!player.IsDead())
             {
                 player.Die();
-                GameRoundController.Instance.PlayerDied();
-                player.gameObject.SetActive(false);
             }
         }
     }
