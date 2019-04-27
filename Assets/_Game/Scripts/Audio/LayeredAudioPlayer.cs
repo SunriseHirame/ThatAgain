@@ -2,7 +2,7 @@
 
 public class LayeredAudioPlayer : MonoBehaviour
 {
-    [SerializeField] private AudioSource[] sources;
+    [SerializeField] private MultiSource[] sources;
     private int currentCombo = -1;
 
     private void Awake ()
@@ -15,8 +15,12 @@ public class LayeredAudioPlayer : MonoBehaviour
         currentCombo = -1;
         foreach (var source in sources)
         {
-            source.Stop ();
+            foreach (var s in source.sources)
+            {
+                s.Stop ();
+            }
         }
+
         ActivateNext ();
     }
 
@@ -25,7 +29,17 @@ public class LayeredAudioPlayer : MonoBehaviour
         currentCombo++;
         if (currentCombo >= sources.Length)
             return;
-        if (!sources[currentCombo].isPlaying)
-            sources[currentCombo].Play ();
+
+        foreach (var s in sources[currentCombo].sources)
+        {
+            if (!s.isPlaying)
+                s.Play ();
+        }    
+    }
+
+    [System.Serializable]
+    private struct MultiSource
+    {
+        public AudioSource[] sources;
     }
 }
