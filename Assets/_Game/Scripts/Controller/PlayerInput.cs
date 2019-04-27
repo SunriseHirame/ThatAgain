@@ -61,6 +61,6 @@ public class PlayerInput : MonoBehaviour
 
     public bool GetJump ()
     {
-        return Input.GetAxisRaw (jump) > 0.2f;
+        return Input.GetButtonDown("Jump"); // (jump) > 0.2f;
     }
 }
