@@ -16,9 +16,9 @@ public class PlayerInput : MonoBehaviour
     [SerializeField]
     private int controlIndex = -1;
 
-    private string horizontalAxis;
-    private string verticalAxis;
-    private string jump;
+    private string horizontalAxis = HorizontalBase;
+    private string verticalAxis = VerticalBase;
+    private string jump = JumpBase;
 
     private void Awake ()
     {
