@@ -23,7 +23,7 @@ public class DisplayRounds : MonoBehaviour
     private void Start()
     {
         roundText = GetComponent<Text>();
-        roundText.text = "Round " + (posRec.FinishCount + 1).ToString();
+        Refresh();
     }
 
     private void Refresh()

@@ -18,6 +18,7 @@ namespace Game
         private bool dead;
         private bool finished;
         public static System.Action OnLevelFinished;
+        public static System.Action OnPlayerDied;
 
         public int DeathCount { get; private set; }
         public int FinishCount { get; private set; }
@@ -52,6 +53,7 @@ namespace Game
             DeathCount++;
             DeathEffects();
             Invoke(nameof(Disable),3);
+            OnPlayerDied?.Invoke();
         }
 
         private void DeathEffects()
