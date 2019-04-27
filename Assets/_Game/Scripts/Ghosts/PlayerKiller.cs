@@ -10,8 +10,12 @@ public class PlayerKiller : MonoBehaviour
         PositionRecorder player = other.GetComponent<PositionRecorder>();
         if (player != null)
         {
-            GameRoundController.Instance.PlayerDied();
-            player.gameObject.SetActive(false);
+            if (!player.IsDead())
+            {
+                player.Die();
+                GameRoundController.Instance.PlayerDied();
+                player.gameObject.SetActive(false);
+            }
         }
     }
 }

@@ -30,11 +30,15 @@ public class GameRoundController : MonoBehaviour
     public void StartRound()
     {
         //resets ghosts and players
-        goal.ResetGhosts();
+        GhostSpawner.Instance.ResetGhosts();
+        ResetPlayers();
+    }
+
+    private void ResetPlayers()
+    {
         finishedPlayers = 0;
         deadPlayers = 0;
-
-        foreach (PositionRecorder player in players)
+        foreach (PositionRecorder player in players) //reset all players
         {
             player.ReturnToStartPosition();
             player.gameObject.SetActive(true);
