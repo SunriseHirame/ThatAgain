@@ -1,119 +1,87 @@
 ﻿using System.Runtime.CompilerServices;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Game
 {
     public class SurfaceChecker : MonoBehaviour
     {
-        private const float SkinWidth = 0.1f;
+        private const float SkinWidth = 0.01f;
         [SerializeField] private LayerMask surfaceMask;
-
+        [SerializeField, Min (0)] private Vector2 scanDistance = new Vector2 (0.08f, 0.08f);
         [SerializeField] private Rect CheckBounds;
         [SerializeField, Min (1)] private int Resolution = 10;
 
         [SerializeField] private Rigidbody2D attachedRigidbody;
 
-        public SurfaceInfo CheckCollisions (ref Vector2 velocity)
+        public SurfaceInfo CheckCollisions ()
         {
-            var collisionFlags = ScanSurfaces (ref velocity);
+            var collisionFlags = ScanSurfaces (scanDistance);
             return new SurfaceInfo (collisionFlags, false);
         }
 
-        private CollisionFlags ScanSurfaces (ref Vector2 velocity)
+        private CollisionFlags ScanSurfaces (Vector2 velocity)
         {
             var position = attachedRigidbody.position;
-            var corners = new RectCorners (CheckBounds, position);
+            var corners = new RectCorners (CheckBounds, position, SkinWidth);
             var collisionFlags = (CollisionFlags) 0;
             
-            collisionFlags |= ScanHorizontal (in corners, ref velocity);
-            collisionFlags |= ScanVertical (in corners, ref velocity);
+            var checkVertical = new Vector2(
+                0,
+                velocity.y + SkinWidth
+            );
+            var steps = (int) CheckBounds.width * Resolution;
+            var stepSize = new Vector2(CheckBounds.width / steps, 0);
+            collisionFlags |= Scan (
+                corners.TopLeft, corners.BottomLeft, checkVertical, 
+                steps, stepSize, CollisionFlags.Above, CollisionFlags.Below);
+            
+            var checkHorizontal = new Vector2(
+                velocity.x + SkinWidth,
+                0
+            );
+            steps = (int) CheckBounds.height * Resolution;
+            stepSize = new Vector2(0, CheckBounds.height / steps);
+            collisionFlags |= Scan (
+                corners.BottomRight, corners.BottomLeft, checkHorizontal,
+                steps, stepSize, CollisionFlags.Right, CollisionFlags.Left);
             return collisionFlags;
         }
 
-        private CollisionFlags ScanVertical (in RectCorners corners, ref Vector2 velocity)
+        private CollisionFlags Scan (Vector2 startPositive, Vector2 startNegative, Vector2 checkDistance,
+            int steps, Vector2 stepSize, CollisionFlags positive, CollisionFlags negative)
         {
-            var isUp = velocity.y <= 0;
-            var sign = Mathf.Sign (velocity.y);
+            var positiveOrigin = startPositive;
+            var negativeOrigin = startNegative;
             
-            var rayOrigin = isUp ? corners.BottomLeft : corners.TopLeft;
-            rayOrigin.y += SkinWidth * -sign;
-            rayOrigin.x += SkinWidth;
+            var direction = checkDistance.normalized;
+            var maxDistance = checkDistance.magnitude;
 
-            var scale = CheckBounds.width * Resolution;
+            var flags = default (CollisionFlags);
             
-            var resolution = 1 + scale;
-            var spacing = (CheckBounds.width - 2 * SkinWidth) / scale;
-            
-            var maxDistance = velocity.magnitude + SkinWidth * -sign;
-            var direction = velocity / maxDistance;
-            
-            var move = velocity.y;
-            var hasCollided = false;
-
-            for (var i = 0; i < resolution; i++)
+            for (var i = 0; i < steps; i++)
             {
-                Debug.DrawRay(rayOrigin, velocity * 5);
-                
-                var hit = Physics2D.Raycast (rayOrigin, direction, maxDistance, surfaceMask);
-                if (hit != default (RaycastHit2D))
+                Debug.DrawRay (negativeOrigin, -checkDistance);
+                Debug.DrawRay (positiveOrigin, checkDistance);
+
+                var rayHitUp = Physics2D.Raycast (positiveOrigin, direction, maxDistance, surfaceMask);
+                if (rayHitUp != default (RaycastHit2D))
                 {
-                    maxDistance = Mathf.Max (hit.distance, SkinWidth * sign);
-                    hasCollided = true;
-                    move = hit.point.y - rayOrigin.y;
+                    flags |= positive;
                 }
 
-                rayOrigin.x += spacing;
-            }
-
-            if (!hasCollided)
-                return 0;
-
-            velocity.y = isUp ? Mathf.Max (move - SkinWidth, 0) : Mathf.Min (move + SkinWidth, 0);
-            return isUp ? CollisionFlags.Below : CollisionFlags.Above;
-        }
-
-        private CollisionFlags ScanHorizontal (in RectCorners corners, ref Vector2 velocity)
-        {
-            var isRight = velocity.x >= 0;
-            var sign = Mathf.Sign (velocity.x);
-            
-            var rayOrigin = isRight ? corners.BottomRight : corners.BottomLeft;
-            rayOrigin.x += SkinWidth * -sign;
-            rayOrigin.y += SkinWidth;
-            
-            var yScale = Resolution * CheckBounds.height;
-            
-            var resolution = 1 + yScale;
-            var spacing = (CheckBounds.height - 2 * SkinWidth) / yScale;
-            
-            var maxDistance = velocity.magnitude + SkinWidth * sign;
-            var direction = velocity / maxDistance;
-
-            var move = velocity.y;
-            var hasCollided = false;
-
-            for (var i =  0; i < resolution; i++)
-            {
-                Debug.DrawRay(rayOrigin, velocity * 5);
-                
-                var hit = Physics2D.Raycast (rayOrigin, direction, maxDistance, surfaceMask);
-                if (hit != default (RaycastHit2D))
+                var rayHitDown = Physics2D.Raycast (negativeOrigin, -direction, maxDistance, surfaceMask);
+                if (rayHitDown != default (RaycastHit2D))
                 {
-                    maxDistance = Mathf.Max (hit.distance, SkinWidth * sign);
-                    hasCollided = true;
-                    move = hit.point.x - rayOrigin.x;
+                    flags |= negative;
                 }
-
-                rayOrigin.y += spacing;
+                
+                negativeOrigin += stepSize;
+                positiveOrigin += stepSize;
             }
-
-            if (!hasCollided)
-                return 0;
-
-            velocity.x = isRight ? Mathf.Max (move - SkinWidth, 0) : Mathf.Min (move + SkinWidth, 0);
-            return isRight ? CollisionFlags.Right : CollisionFlags.Left;
+            return flags;
         }
-
+        
         private void OnDrawGizmosSelected ()
         {
             var rectCorners = new RectCorners (CheckBounds, transform.position);
@@ -136,6 +104,17 @@ namespace Game
         {
             var hw = rect.width / 2f;
             var hh = rect.height / 2f;
+
+            BottomLeft = origin + new Vector2 (-hw + rect.x, -hh + rect.y);
+            BottomRight = origin + new Vector2 (hw + rect.x, -hh + rect.y);
+            TopLeft = origin + new Vector2 (-hw + rect.x, hh + rect.y);
+            TopRight = origin + new Vector2 (hw + rect.x, hh + rect.y);
+        }
+
+        public RectCorners (Rect rect, Vector2 origin, float skinWidth)
+        {
+            var hw = rect.width / 2f - skinWidth;
+            var hh = rect.height / 2f - skinWidth;
 
             BottomLeft = origin + new Vector2 (-hw + rect.x, -hh + rect.y);
             BottomRight = origin + new Vector2 (hw + rect.x, -hh + rect.y);
