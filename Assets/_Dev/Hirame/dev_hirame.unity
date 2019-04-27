@@ -1823,7 +1823,7 @@ PrefabInstance:
     - target: {fileID: 6292241696685414707, guid: b784b77b58353814fa008d8bb23c20b6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.17
       objectReference: {fileID: 0}
     - target: {fileID: 6292241696685414707, guid: b784b77b58353814fa008d8bb23c20b6,
         type: 3}
@@ -1874,11 +1874,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6292241696685414705, guid: b784b77b58353814fa008d8bb23c20b6,
-        type: 3}
-      propertyPath: idleDrag
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b784b77b58353814fa008d8bb23c20b6, type: 3}
