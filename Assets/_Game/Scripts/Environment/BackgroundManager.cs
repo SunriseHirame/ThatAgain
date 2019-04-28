@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class BackgroundManager : MonoBehaviour
 {
-    public static BackgroundManager backgroundManager
-    {
-        get
-        {
-            return bgm;
-        }
-    }
-
-    private static BackgroundManager bgm = null;
+    /// <summary>
+    /// Singleton - Returns a reference to the active instance of BackgroundManager
+    /// </summary>
+    public static BackgroundManager backgroundManager { get; private set; } = null;
 
     public int completionsPerChange = 3;
     [SerializeField]
@@ -34,9 +29,9 @@ public class BackgroundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (bgm == null)
+        if (backgroundManager == null)
         {
-            bgm = this;
+            backgroundManager = this;
         }
 
         ResetBackground();
