@@ -97,7 +97,7 @@ LightmapSettings:
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -964,7 +964,7 @@ PrefabInstance:
     - target: {fileID: 5631084921692807906, guid: 67c4272df7586cc49bf1ed07334c1d08,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.645664
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5631084921692807906, guid: 67c4272df7586cc49bf1ed07334c1d08,
         type: 3}
@@ -5237,7 +5237,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1816010009}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 0.006, y: 0.006, z: 0.006}
   m_Children:
   - {fileID: 1851979912}
@@ -6345,7 +6345,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2160272500792409646}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4377f5bf6563d0543a571cf5c4ead32c, type: 3}
   m_Name: 
