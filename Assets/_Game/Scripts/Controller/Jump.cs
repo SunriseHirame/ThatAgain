@@ -17,6 +17,8 @@ namespace Game
         [Header ("Wall Jumping")]
         [SerializeField] private bool allowWallJump;
         [SerializeField] private float wallJumpAngle = 30f;
+        [SerializeField] private float wallJumpBoost = 1.2f;
+        
         
         [SerializeField]
         private Rigidbody2D attachedRigidbody;
@@ -24,9 +26,10 @@ namespace Game
         private float lastJumpTime;
         private int jumpCount;
 
-        public void ResetJumpCounter ()
+        public void ResetJumpCounter (bool full = true)
         {
-            jumpCount = 0;
+            print ("jump counter reset");
+            jumpCount = full ? 0 : 1;
         }
 
         [MethodImpl (MethodImplOptions.AggressiveInlining)]
@@ -51,12 +54,13 @@ namespace Game
             {
                 print ("Wall Jump!");
                 var v = GetJumpVelocity (in velocity);
-                velocity.y = math.cos (wallJumpAngle * Mathf.Deg2Rad) * v;
+                velocity.y = math.cos (wallJumpAngle * Mathf.Deg2Rad) * v * wallJumpBoost;
 
-                var xAdditionalVelocity = math.sin (wallJumpAngle * Mathf.Deg2Rad) * v;
+                var xAdditionalVelocity = math.sin (wallJumpAngle * Mathf.Deg2Rad) * v * wallJumpBoost;
                 velocity.x += (surfaceInfo.Collisions & CollisionFlags.Left) != 0
                     ? xAdditionalVelocity
                     : -xAdditionalVelocity;
+                
                 return true;
             }
             

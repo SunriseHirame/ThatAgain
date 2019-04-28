@@ -63,6 +63,7 @@ MonoBehaviour:
   allowAirJump: 1
   allowWallJump: 1
   wallJumpAngle: 30
+  wallJumpBoost: 1.2
   attachedRigidbody: {fileID: 7462322060841821784}
 --- !u!114 &1087404350
 MonoBehaviour:
@@ -82,6 +83,8 @@ MonoBehaviour:
   airControl: 0.538
   smoothing: 0.12
   wallClingTime: 0.25
+  resetJumpOnOppositeWallCling: 1
+  noCling: 0
   attachedRigidbody: {fileID: 7462322060841821784}
   surfaceCheck: {fileID: 1087404351}
   playerInput: {fileID: 1087404352}
@@ -101,12 +104,12 @@ MonoBehaviour:
   surfaceMask:
     serializedVersion: 2
     m_Bits: 1
-  scanDistance: {x: 0.1, y: 0.1}
+  scanDistance: {x: 0.3, y: 0.1}
   CheckBounds:
     serializedVersion: 2
     x: 0
     y: -0.11
-    width: 0.4
+    width: 0.38
     height: 1.91
   Resolution: 20
   attachedRigidbody: {fileID: 7462322060841821784}
