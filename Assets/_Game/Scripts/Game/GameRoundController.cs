@@ -32,6 +32,7 @@ namespace Game
 
         public void EndGame()
         {
+            print("YOU DIED");
             gameEnded = true;
         }
 
@@ -48,8 +49,8 @@ namespace Game
             deadPlayers = 0;
             foreach (PositionRecorder player in players) //reset all players
             {
+                //player.gameObject.SetActive (true);
                 player.ReturnToStartPosition ();
-                player.gameObject.SetActive (true);
             }
         }
 

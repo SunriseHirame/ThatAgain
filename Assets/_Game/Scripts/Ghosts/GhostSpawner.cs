@@ -27,7 +27,7 @@ namespace Game
         {
             PositionRecorder player = other.attachedRigidbody.GetComponent<PositionRecorder>();
 
-            if (player != null && !player.IsFinished())
+            if (player != null && !player.IsFinished() && !player.IsDead())
             {
                 SpawnGhost(player.GetPositionHistory()); //spawn new ghost
                 player.FinishLevel();

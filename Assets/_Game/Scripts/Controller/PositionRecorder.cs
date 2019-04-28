@@ -13,13 +13,14 @@ namespace Game
         [SerializeField] private GameObject graphics;
         [SerializeField] private PlayerData playerData;
         [SerializeField] private DeathZoom zoom;
+        [SerializeField] private LayeredAudioPlayer layeredAudioPlayer;
         private List<Vector3> recordedPos = new List<Vector3> ();
         private Vector3 startPosition;
         private Rigidbody2D rb;
         private bool dead;
         private bool finished;
         public static System.Action OnLevelFinished;
-        public static System.Action OnPlayerDied;
+        public static System.Action OnPlayerLoseHealth;
 
         public int DeathCount { get; private set; }
         public int FinishCount { get; private set; }
@@ -39,24 +40,28 @@ namespace Game
 
         public void ReturnToStartPosition ()
         {
-            zoom.ResetZoom();
-            graphics.SetActive(true);
+            GetComponent<BoxCollider2D>().enabled = true;
+            GetComponent<Animator>().enabled = true;
+            GetComponent<RagdollController>().SetRagdolling(false);
             dead = false;
             finished = false;
             rb.velocity = Vector2.zero;
             transform.position = startPosition;
             ClearRecordedPosition ();
+            zoom.ResetZoom();
         }
 
         public void Die ()
         {
-            ClearRecordedPosition ();
             dead = true;
             DeathCount++;
             DeathEffects();
             Invoke(nameof(Disable),3);
+            GetComponent<Animator>().enabled = false;
+            GetComponent<RagdollController>().SetRagdolling(true);
+            GetComponent<BoxCollider2D>().enabled = false;
             
-            OnPlayerDied?.Invoke();
+            OnPlayerLoseHealth?.Invoke();
             if (DeathCount >= 5)
             {
                 GameRoundController.Instance.EndGame();
@@ -65,17 +70,17 @@ namespace Game
 
         private void DeathEffects()
         {
-            graphics.SetActive(false);
+            //graphics.SetActive(false);
             deathParticleSystem.GetComponent<ParticleSystem>().Play();
-            GameObject rag = Instantiate(ragdoll, transform.position+Vector3.up, quaternion.identity);
-            zoom.target = rag.transform;
+            //GameObject rag = Instantiate(ragdoll, transform.position+Vector3.up, quaternion.identity);
+            zoom.target = this.transform;
             zoom.Zoom();
-            rag.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1.0f,1.0f)*500f,Random.Range(-1.0f,1.0f)*500f);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1.0f,1.0f)*500f,Random.Range(-1.0f,1.0f)*500f);
         }
         
         private void Disable()
         {
-            gameObject.SetActive (false);
+            //gameObject.SetActive (false);
             GameRoundController.Instance.PlayerDied ();
         }
 
@@ -86,16 +91,14 @@ namespace Game
 
         public void FinishLevel ()
         {
-            
+            layeredAudioPlayer.ActivateNext();
             timeTracker.SetTime();
             finished = true;
             GameRoundController.Instance.PlayerFinished (); //count finished players
-            ClearRecordedPosition ();
-            gameObject.SetActive (false);
+            //gameObject.SetActive (false);
             FinishCount++;
             OnLevelFinished?.Invoke();
             playerData.PushScore();
-
         }
 
         public bool IsFinished ()

@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class DisplayRounds : MonoBehaviour
 {
-    private Text roundText; 
+    [SerializeField] private Text roundText;
+    [SerializeField] private Text enemiesText;
     [SerializeField] private PositionRecorder posRec;
 
 
@@ -22,12 +23,12 @@ public class DisplayRounds : MonoBehaviour
 
     private void Start()
     {
-        roundText = GetComponent<Text>();
         Refresh();
     }
 
     private void Refresh()
     {
         roundText.text = "Round " + (posRec.FinishCount + 1).ToString();
+        enemiesText.text = "enemies: " + (posRec.FinishCount).ToString();
     }
 }
