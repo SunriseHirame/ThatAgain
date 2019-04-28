@@ -75,7 +75,7 @@ namespace Game
             //GameObject rag = Instantiate(ragdoll, transform.position+Vector3.up, quaternion.identity);
             zoom.target = this.transform;
             zoom.Zoom();
-            GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1.0f,1.0f)*500f,Random.Range(-1.0f,1.0f)*500f);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1.0f,1.0f)*100f,Random.Range(-1.0f,1.0f)*100f);
         }
         
         private void Disable()
