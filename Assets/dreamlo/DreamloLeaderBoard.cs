@@ -10,8 +10,8 @@ public class DreamloLeaderBoard : MonoBehaviour
     string dreamloWebserviceURL = "http://dreamlo.com/lb/";
 
     private DreamloBoard board;
-    //private const string privateCode = "cBM60QmPMUq2FFMTvF-pCwXfRCPGo2E0uM3D1gFPxbLQ";
-    //private const string publicCode = "5cc460c73eba951290eecc84";
+    private const string privateCode = "cBM60QmPMUq2FFMTvF-pCwXfRCPGo2E0uM3D1gFPxbLQ";
+    private const string publicCode = "5cc460c73eba951290eecc84";
 
     string highScores = "";
 
@@ -108,7 +108,7 @@ public class DreamloLeaderBoard : MonoBehaviour
     {
         playerName = Clean (playerName);
 
-        WWW www = new WWW (dreamloWebserviceURL + board.privateKey + "/add-pipe/" + WWW.EscapeURL (playerName) + "/" +
+        WWW www = new WWW (dreamloWebserviceURL + (board ? board.privateKey : privateCode) + "/add-pipe/" + WWW.EscapeURL (playerName) + "/" +
                            totalScore.ToString ());
         yield return www;
         highScores = www.text;
@@ -118,7 +118,7 @@ public class DreamloLeaderBoard : MonoBehaviour
     {
         playerName = Clean (playerName);
 
-        WWW www = new WWW (dreamloWebserviceURL + board.privateKey + "/add-pipe/" + WWW.EscapeURL (playerName) + "/" +
+        WWW www = new WWW (dreamloWebserviceURL + (board ? board.privateKey : privateCode) + "/add-pipe/" + WWW.EscapeURL (playerName) + "/" +
                            totalScore.ToString () + "/" + totalSeconds.ToString ());
         yield return www;
         highScores = www.text;
@@ -129,7 +129,7 @@ public class DreamloLeaderBoard : MonoBehaviour
         playerName = Clean (playerName);
         shortText = Clean (shortText);
 
-        WWW www = new WWW (dreamloWebserviceURL + board.privateKey + "/add-pipe/" + WWW.EscapeURL (playerName) + "/" +
+        WWW www = new WWW (dreamloWebserviceURL + (board ? board.privateKey : privateCode) + "/add-pipe/" + WWW.EscapeURL (playerName) + "/" +
                            totalScore.ToString () + "/" + totalSeconds.ToString () + "/" + shortText);
         yield return www;
         highScores = www.text;
@@ -138,7 +138,7 @@ public class DreamloLeaderBoard : MonoBehaviour
     IEnumerator GetScores (System.Action callback)
     {
         highScores = "";
-        WWW www = new WWW (dreamloWebserviceURL + board.publicKey + "/pipe");
+        WWW www = new WWW (dreamloWebserviceURL + (board ? board.publicKey : publicCode) + "/pipe");
         yield return www;
         highScores = www.text;
         callback?.Invoke ();
@@ -147,7 +147,7 @@ public class DreamloLeaderBoard : MonoBehaviour
     IEnumerator GetSingleScore (string playerName)
     {
         highScores = "";
-        WWW www = new WWW (dreamloWebserviceURL + board.publicKey + "/pipe-get/" + WWW.EscapeURL (playerName));
+        WWW www = new WWW (dreamloWebserviceURL + (board ? board.publicKey : publicCode) + "/pipe-get/" + WWW.EscapeURL (playerName));
         yield return www;
         highScores = www.text;
     }
