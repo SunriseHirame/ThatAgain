@@ -9,12 +9,23 @@ public class RagdollController : MonoBehaviour
     private bool ignoreObjectsOnRoot;
     private Collider2D[] colliders;
     private Rigidbody2D[] bodies;
+    private Vector3[] originalPosition;
+    private float[] originalRotations;
 
     private void Awake ()
     {
         //joints = GetComponentsInChildren<HingeJoint> ();
         bodies = GetComponentsInChildren<Rigidbody2D> ();
         colliders = GetComponentsInChildren<Collider2D> ();
+
+        originalPosition = new Vector3[bodies.Length];
+        originalRotations = new float[bodies.Length];
+
+        for (var i = 0; i < bodies.Length; i++)
+        {
+            originalPosition[i] = bodies[i].position;
+            originalRotations[i] = bodies[i].rotation;
+        }
         SetRagdolling (initialState);
     }
 
@@ -39,6 +50,15 @@ public class RagdollController : MonoBehaviour
             if (col.transform.Equals (ownTransform))
                 continue;
             col.enabled = state;
+        }
+
+        if (state == false)
+        {
+            for (var i = 0; i < bodies.Length; i++)
+            {
+                bodies[i].position = originalPosition[i];
+                bodies[i].rotation = originalRotations[i];
+            }
         }
     }
 }
