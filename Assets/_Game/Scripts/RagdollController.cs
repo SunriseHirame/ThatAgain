@@ -41,8 +41,17 @@ public class RagdollController : MonoBehaviour
         foreach (var body in bodies)
         {
             if (body.transform.Equals (ownTransform))
+            {
+                //body.freezeRotation = !state;
                 continue;
+            }
             body.simulated = state;
+
+            if (state == false)
+            {
+                body.velocity = Vector2.zero;
+                body.angularVelocity = 0f;
+            }
         }
 
         foreach (var col in colliders)
