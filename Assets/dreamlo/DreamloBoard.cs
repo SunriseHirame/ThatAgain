@@ -1,11 +1,19 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu]
 public class DreamloBoard : ScriptableObject
 {
     [SerializeField]
-    private string privateKey;
+    internal string privateKey;
     
     [SerializeField]
-    private string publicKey;
+    internal string publicKey;
+
+    public UnityEvent Loaded;
+    
+    public void Load ()
+    {
+        DreamloLeaderBoard.Instance.LoadScores (this, () => Loaded.Invoke ());
+    }
 }
