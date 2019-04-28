@@ -112,7 +112,7 @@ namespace Game
                 return;
             
             jumpInput = false;
-            jump.GetJumpVelocity (surfaceInfo.OnGround, ref currentVelocity);
+            jump.GetJumpVelocity (in surfaceInfo, ref currentVelocity);
         }
 
     }
