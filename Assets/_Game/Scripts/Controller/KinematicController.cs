@@ -20,6 +20,8 @@ namespace Game
 
         [SerializeField, Min (0)] private float smoothing = 1f;
         [SerializeField, Min(0)] private float wallClingTime = 0.25f;
+        [SerializeField] private bool resetJumpOnOppositeWallCling;
+        [SerializeField] private bool noCling;
         
         private float inputX;
         private bool jumpInput;        
@@ -66,7 +68,7 @@ namespace Game
 
             
             
-            //HandleWallCling (ref currentVelocity);
+            HandleWallCling (ref currentVelocity);
             HandleJump (ref currentVelocity);
             
             attachedRigidbody.velocity = currentVelocity;
@@ -93,15 +95,24 @@ namespace Game
 
             if (inputX > 0.1f && surfaceInfo.SurfaceAngles.RightWallAngle > 70)
             {
-                currentVelocity.y = 0f;
-                jump.ResetJumpCounter ();
+                if (noCling)
+                    currentVelocity.y = 0f;
+                if (resetJumpOnOppositeWallCling && lastWallCling != WallCling.Right)
+                    jump.ResetJumpCounter (false);
+                lastWallCling = WallCling.Right;
                 return;
             }
             
             if (inputX < -0.1f && surfaceInfo.SurfaceAngles.LeftWallAngle > 70)
             {
-                currentVelocity.y = 0f;
-                jump.ResetJumpCounter ();
+                if (noCling)
+                    currentVelocity.y = 0f;
+                if (resetJumpOnOppositeWallCling && lastWallCling != WallCling.Left)
+                {
+                    jump.ResetJumpCounter (false);
+                }
+                print ("cling left");
+                lastWallCling = WallCling.Left;
                 return;
             }
         }
