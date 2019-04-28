@@ -40,7 +40,9 @@ namespace Game
 
         public void ReturnToStartPosition ()
         {
-            graphics.SetActive(true);
+            GetComponent<BoxCollider2D>().enabled = true;
+            GetComponent<Animator>().enabled = true;
+            GetComponent<RagdollController>().SetRagdolling(false);
             dead = false;
             finished = false;
             rb.velocity = Vector2.zero;
@@ -55,6 +57,9 @@ namespace Game
             DeathCount++;
             DeathEffects();
             Invoke(nameof(Disable),3);
+            GetComponent<Animator>().enabled = false;
+            GetComponent<RagdollController>().SetRagdolling(true);
+            GetComponent<BoxCollider2D>().enabled = false;
             
             OnPlayerLoseHealth?.Invoke();
             if (DeathCount >= 5)
@@ -65,17 +70,17 @@ namespace Game
 
         private void DeathEffects()
         {
-            graphics.SetActive(false);
+            //graphics.SetActive(false);
             deathParticleSystem.GetComponent<ParticleSystem>().Play();
-            GameObject rag = Instantiate(ragdoll, transform.position+Vector3.up, quaternion.identity);
-            zoom.target = rag.transform;
+            //GameObject rag = Instantiate(ragdoll, transform.position+Vector3.up, quaternion.identity);
+            zoom.target = this.transform;
             zoom.Zoom();
-            rag.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1.0f,1.0f)*500f,Random.Range(-1.0f,1.0f)*500f);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1.0f,1.0f)*500f,Random.Range(-1.0f,1.0f)*500f);
         }
         
         private void Disable()
         {
-            gameObject.SetActive (false);
+            //gameObject.SetActive (false);
             GameRoundController.Instance.PlayerDied ();
         }
 
@@ -90,7 +95,7 @@ namespace Game
             timeTracker.SetTime();
             finished = true;
             GameRoundController.Instance.PlayerFinished (); //count finished players
-            gameObject.SetActive (false);
+            //gameObject.SetActive (false);
             FinishCount++;
             OnLevelFinished?.Invoke();
             playerData.PushScore();
