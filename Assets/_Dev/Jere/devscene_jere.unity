@@ -1566,6 +1566,61 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9160937968102266102, guid: 460645f33105c6a4a8f251590935da67,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.30599728
+      objectReference: {fileID: 0}
+    - target: {fileID: 484181210986175886, guid: 460645f33105c6a4a8f251590935da67,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.05199804
+      objectReference: {fileID: 0}
+    - target: {fileID: 6451157483661721940, guid: 460645f33105c6a4a8f251590935da67,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.30599728
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639744394091614267, guid: 460645f33105c6a4a8f251590935da67,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.25999695
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639744394091614267, guid: 460645f33105c6a4a8f251590935da67,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.53999984
+      objectReference: {fileID: 0}
+    - target: {fileID: 262391549100089090, guid: 460645f33105c6a4a8f251590935da67,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.6520038
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678841762232380017, guid: 460645f33105c6a4a8f251590935da67,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.716004
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231075130102839609, guid: 460645f33105c6a4a8f251590935da67,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.07099526
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231075130102839609, guid: 460645f33105c6a4a8f251590935da67,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.6850002
+      objectReference: {fileID: 0}
+    - target: {fileID: 8236233729651633314, guid: 460645f33105c6a4a8f251590935da67,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.6429998
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621091763832341490, guid: 460645f33105c6a4a8f251590935da67,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.13099921
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 460645f33105c6a4a8f251590935da67, type: 3}
 --- !u!1 &500994434
@@ -4882,6 +4937,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bouncer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935988669487984331, guid: 19f8310461e8b8e4d8d5d0ba007b482f,
+        type: 3}
+      propertyPath: PlayerLayer.m_Bits
+      value: 768
       objectReference: {fileID: 0}
     - target: {fileID: 5361899293120513188, guid: 19f8310461e8b8e4d8d5d0ba007b482f,
         type: 3}

@@ -8,12 +8,13 @@ public class BouncyPlatform : MonoBehaviour
     [SerializeField] private float Force;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        print("bounce");
-        if ((1 << other.gameObject.layer) == PlayerLayer)
+        var player = other.transform.GetComponentInParent<Game.Player> ();
+        if (player)
         {
             print("Bounce");
-            other.attachedRigidbody.velocity = Vector2.zero;
-            other.attachedRigidbody.AddForce(transform.up * Force,ForceMode2D.Impulse);
+            var rb = player.GetComponent<Rigidbody2D> ();
+            rb.velocity = Vector2.zero;
+            rb.AddForce(transform.up * Force,ForceMode2D.Impulse);
         }
     }
 }

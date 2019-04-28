@@ -62,8 +62,8 @@ MonoBehaviour:
   jumpCooldown: 0.1
   allowAirJump: 1
   allowWallJump: 1
-  wallJumpAngle: 30
-  wallJumpBoost: 1.2
+  wallJumpAngle: 25
+  wallJumpBoost: 1.22
   attachedRigidbody: {fileID: 7462322060841821784}
 --- !u!114 &1087404350
 MonoBehaviour:
