@@ -40,7 +40,7 @@ public class BackgroundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(testToggle)
+        if (testToggle)
         {
             testToggle = false;
             LevelCompleted();
@@ -88,6 +88,10 @@ public class BackgroundManager : MonoBehaviour
         if (changeIndex < backgroundForestElements.Length)
         {
             backgroundForestElements[changeIndex].SetActive(false);
+        }
+
+        if (changeIndex < backgroundCityElements.Length)
+        {
             backgroundCityElements[changeIndex].SetActive(true);
         }
     }
