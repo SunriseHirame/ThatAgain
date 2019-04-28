@@ -8,6 +8,8 @@ namespace Game
     {
         public static GameRoundController Instance { get; private set; }
 
+        [SerializeField] private bool betterMode;
+
         //private GhostSpawner goal;
 
         private List<PositionRecorder> players = new List<PositionRecorder> ();
@@ -19,7 +21,7 @@ namespace Game
 
         void Update ()
         {
-            if (playerCount > 0 && EveryoneFinished () && !gameEnded)
+            if (playerCount > 0 && EveryoneFinished () && (!gameEnded || betterMode))
             {
                 StartRound ();
             }
