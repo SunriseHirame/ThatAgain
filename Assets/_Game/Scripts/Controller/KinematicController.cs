@@ -39,6 +39,8 @@ namespace Game
         [SerializeField]
         private SurfaceInfo surfaceInfo;
 
+        public bool OnGround => surfaceInfo.OnGround;
+        
         private float damperValue;
         private float wallClingStart;
         
