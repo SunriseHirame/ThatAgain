@@ -4394,13 +4394,13 @@ MonoBehaviour:
   currentScoreStep: 0
   changeIndex: 0
   backgroundForestElements:
-  - {fileID: 7011528893191272574}
-  - {fileID: 586272626637403581}
   - {fileID: 1956020009087844778}
+  - {fileID: 586272626637403581}
+  - {fileID: 7011528893191272574}
   backgroundCityElements:
-  - {fileID: 6620592498701422853}
-  - {fileID: 4634148929676537593}
   - {fileID: 2903306178208277338}
+  - {fileID: 4634148929676537593}
+  - {fileID: 6620592498701422853}
   testToggle: 0
 --- !u!1 &6932331708778463195
 GameObject:
@@ -5160,7 +5160,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8213857210238806098
 Transform:
   m_ObjectHideFlags: 0
