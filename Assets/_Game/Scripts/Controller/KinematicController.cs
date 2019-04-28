@@ -76,6 +76,8 @@ namespace Game
 
         private float GetIdleDrag ()
         {
+            if (playerInput.GetJump ())
+                return moveDrag;
             return attachedRigidbody.velocity.sqrMagnitude > 0.2f ? attachedRigidbody.drag : idleDrag;
         }
         
