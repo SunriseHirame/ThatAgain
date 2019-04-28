@@ -42,7 +42,8 @@ namespace Game
         {
             //resets ghosts and players
             GhostSpawner.Instance.ResetGhosts ();
-            BackgroundManager.backgroundManager.LevelCompleted ();
+            if (BackgroundManager.backgroundManager)
+                BackgroundManager.backgroundManager.LevelCompleted ();
             ResetPlayers ();
         }
 
