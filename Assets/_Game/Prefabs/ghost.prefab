@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8482852853064450403}
   - component: {fileID: 47572115815636401}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: LegLowerRightGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 1771552297720122729}
   - component: {fileID: 6953095237940080954}
   - component: {fileID: 1461491414543846551}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: HeadGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8163048815846731254}
   - component: {fileID: 6275755143820623203}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: ArmLeftTopGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6649315161456412168}
   - component: {fileID: 7293011449911428734}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: LegLowerLeftGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5135854335421180477}
   - component: {fileID: 1844193169680263804}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: ArmRightBottomGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 3631639428922185298}
   - component: {fileID: 4212072983810681753}
   - component: {fileID: 8290442938818170584}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,8 +453,8 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2957270688278291982}
-  m_BodyType: 1
-  m_Simulated: 1
+  m_BodyType: 0
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -481,7 +481,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -13.462675, y: 0.02163726}
+  m_ConnectedAnchor: {x: -14.277912, y: -7.086216}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 8885384468808260158}
   - component: {fileID: 8195581446342055027}
   - component: {fileID: 5124385204752911558}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: ArmLeftTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,8 +533,8 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3178868944925741550}
-  m_BodyType: 1
-  m_Simulated: 1
+  m_BodyType: 0
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -561,7 +561,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -13.665324, y: -0.10855657}
+  m_ConnectedAnchor: {x: -14.480561, y: -7.2164097}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -606,7 +606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5997648004358274630}
   - component: {fileID: 1351086117419934793}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: LegUpperLeftGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5781108335209915562}
   - component: {fileID: 6641656303185974680}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: ArmRightTopGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -764,7 +764,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7066281989045199937}
   - component: {fileID: 7091678879271422935}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: ArmLeftBottomGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -844,7 +844,7 @@ GameObject:
   - component: {fileID: 1703359310078640886}
   - component: {fileID: 4292957642704582169}
   - component: {fileID: 3097948602438789196}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: ArmLeftBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -875,8 +875,8 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4247308481300576826}
-  m_BodyType: 1
-  m_Simulated: 1
+  m_BodyType: 0
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -903,7 +903,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.050000004, y: -0.71600026}
+  m_ConnectedAnchor: {x: -0.050000213, y: -0.71600026}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -924,7 +924,7 @@ GameObject:
   - component: {fileID: 5229826489484648252}
   - component: {fileID: 2285996415032932144}
   - component: {fileID: 6574523162654654815}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: LegUpperLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -955,8 +955,8 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4687315397706192539}
-  m_BodyType: 1
-  m_Simulated: 1
+  m_BodyType: 0
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -983,7 +983,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -13.639286, y: -0.6587668}
+  m_ConnectedAnchor: {x: -14.454523, y: -7.7666197}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1029,7 +1029,7 @@ GameObject:
   - component: {fileID: 8743735780951968389}
   - component: {fileID: 8944808628379259171}
   - component: {fileID: 621128033277215955}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: BodyGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1141,7 +1141,7 @@ GameObject:
   - component: {fileID: 2871767338292370889}
   - component: {fileID: 5209764487625613627}
   - component: {fileID: 251662701091258967}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: LegLowerRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1172,8 +1172,8 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6132206288876422410}
-  m_BodyType: 1
-  m_Simulated: 1
+  m_BodyType: 0
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -1200,7 +1200,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.100000516, y: -0.69299996}
+  m_ConnectedAnchor: {x: 0.100000516, y: -0.6930001}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1247,7 +1247,7 @@ GameObject:
   - component: {fileID: 5985722756772212423}
   - component: {fileID: 6379981412907201814}
   - component: {fileID: 205574687159568540}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: LegUpperRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1278,8 +1278,8 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6447733891621935534}
-  m_BodyType: 1
-  m_Simulated: 1
+  m_BodyType: 0
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -1306,7 +1306,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -13.374936, y: -0.65650254}
+  m_ConnectedAnchor: {x: -14.190173, y: -7.7643557}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1354,7 +1354,9 @@ GameObject:
   - component: {fileID: 7119732933805164079}
   - component: {fileID: 8078878946886074590}
   - component: {fileID: 7630201820215812416}
-  m_Layer: 0
+  - component: {fileID: 1496355149}
+  - component: {fileID: 1496355148}
+  m_Layer: 13
   m_Name: ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1408,7 +1410,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6651808684823166402}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1447,6 +1449,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!95 &1496355149
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6651808684823166402}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b7c14a985998bb44b5fe54581655b37, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1496355148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6651808684823166402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d500709bf4258f74987c662fc27d396c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachedAnimator: {fileID: 1496355149}
+  attachedRigidody: {fileID: 8078878946886074590}
+  graphicsRoot: {fileID: 4721700948997033097}
+  speedMult: 1
 --- !u!1 &6781426494473176239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,7 +1494,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7482314889936172685}
   - component: {fileID: 7302733292894400325}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: FootRightGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1538,7 +1575,7 @@ GameObject:
   - component: {fileID: 2417162921812295581}
   - component: {fileID: 6811977345831366324}
   - component: {fileID: 494991815740925502}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: LegLowerLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1569,8 +1606,8 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6875014243576850164}
-  m_BodyType: 1
-  m_Simulated: 1
+  m_BodyType: 0
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -1597,7 +1634,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.07100077, y: -0.6850003}
+  m_ConnectedAnchor: {x: 0.07100077, y: -0.68500084}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1644,7 +1681,7 @@ GameObject:
   - component: {fileID: 1868694034108091796}
   - component: {fileID: 8731534573416146119}
   - component: {fileID: 4537400791325979804}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: FootRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1702,7 +1739,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.10499919, y: -0.643}
+  m_ConnectedAnchor: {x: -0.10499919, y: -0.6429998}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1749,7 +1786,7 @@ GameObject:
   - component: {fileID: 5901516483820424771}
   - component: {fileID: 3629012779928406730}
   - component: {fileID: 168641451192613918}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: FootLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1807,7 +1844,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.13100007, y: -0.6379999}
+  m_ConnectedAnchor: {x: -0.13100007, y: -0.6379995}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1852,7 +1889,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6351304360240330442}
   - component: {fileID: 3888380315021768234}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1909,7 +1946,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5573834752345531796}
   - component: {fileID: 2396235658740174082}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: FootLeftGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1988,7 +2025,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3403607170973869873}
   - component: {fileID: 8830059058385785892}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: LegUpperLeftGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2069,7 +2106,7 @@ GameObject:
   - component: {fileID: 779623166644240128}
   - component: {fileID: 217357107594391763}
   - component: {fileID: 5151501547133009421}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: ArmRightBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2099,8 +2136,8 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8928145078021768839}
-  m_BodyType: 1
-  m_Simulated: 1
+  m_BodyType: 0
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -2127,7 +2164,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.08499991, y: -0.6520013}
+  m_ConnectedAnchor: {x: -0.08500028, y: -0.6520013}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2174,7 +2211,7 @@ GameObject:
   - component: {fileID: 4338360732095486782}
   - component: {fileID: 7449307831114070149}
   - component: {fileID: 223301613309558548}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: ArmRightTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2205,8 +2242,8 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9101108553058975463}
-  m_BodyType: 1
-  m_Simulated: 1
+  m_BodyType: 0
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -2233,7 +2270,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -13.318896, y: -0.1215758}
+  m_ConnectedAnchor: {x: -14.134133, y: -7.229429}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
