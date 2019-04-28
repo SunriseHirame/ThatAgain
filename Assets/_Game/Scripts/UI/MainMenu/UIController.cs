@@ -23,5 +23,10 @@ public class UIController : MonoBehaviour
     {
         currentCanvas.enabled = false;
     }
+
+    public void ToggleCanvas()
+    {
+        currentCanvas.enabled = !currentCanvas.enabled;
+    }
     
 }

@@ -18,11 +18,6 @@ namespace Game
             Instance = this;
         }
 
-        private void Start()
-        {
-            GameRoundController.Instance.SetGoalObject(this);
-        }
-
         private void OnTriggerEnter2D(Collider2D other) //player enters finish line
         {
             PositionRecorder player = other.attachedRigidbody.GetComponent<PositionRecorder>();
@@ -31,6 +26,7 @@ namespace Game
             {
                 SpawnGhost(player.GetPositionHistory()); //spawn new ghost
                 player.FinishLevel();
+                print("PLAYER FINISHED");
             }
         }
 

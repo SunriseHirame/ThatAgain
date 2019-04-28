@@ -40,6 +40,8 @@ public class HealthController : MonoBehaviour
             healthObjects[i].GetComponent<HealthObject>().UiLoseHealth();
             if (i == 0)
             {
+                GameRoundController.Instance.EndGame();
+
                 deathCanvas.GetComponent<UIController>().DisplayCanvas();
                 GetComponent<UIController>().HideCanvas();
             }

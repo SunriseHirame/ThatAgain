@@ -31,6 +31,7 @@ namespace Game
 
         private void Start ()
         {
+            GameRoundController.Instance.StartGame();
             rb = GetComponent<Rigidbody2D> ();
             startPosition = transform.position;
             GameRoundController.Instance.AddPlayer (this);
@@ -69,6 +70,7 @@ namespace Game
             if (DeathCount >= 5)
             {
                 GameRoundController.Instance.EndGame();
+                
             }
         }
 
@@ -118,6 +120,11 @@ namespace Game
         private void ClearRecordedPosition ()
         {
             recordedPos.Clear ();
+        }
+
+        private void OnDestroy()
+        {
+            GameRoundController.Instance.RemovePlayer(this);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Game
 {
@@ -19,12 +20,18 @@ namespace Game
         public int finishedPlayers;
         public int deadPlayers;
 
+        
         void Update ()
         {
             if (playerCount > 0 && EveryoneFinished () && (!gameEnded || betterMode))
             {
                 StartRound ();
             }
+        }
+
+        public void StartGame()
+        {
+            gameEnded = false;
         }
 
         private void Start()
@@ -37,6 +44,8 @@ namespace Game
             print("YOU DIED");
             gameEnded = true;
         }
+        
+        
 
         public void StartRound ()
         {
@@ -56,11 +65,6 @@ namespace Game
                 //player.gameObject.SetActive (true);
                 player.ReturnToStartPosition ();
             }
-        }
-
-        public void SetGoalObject (GhostSpawner spawner)
-        {
-            //goal = spawner;
         }
 
         private bool EveryoneFinished ()
