@@ -22,10 +22,11 @@ public class DisplayLeaderboard : MonoBehaviour
     {
         sorted = DreamloLeaderBoard.Instance.ToListHighToLow ();
         shownElements = math.min (displayElements.Count, sorted.Count - StartFrom);
+        if (StartFrom < 0)
+            StartFrom = 0;
         if (shownElements < 0)
-        {
             shownElements = 0;
-        }
+        
         print("elements" + shownElements);
         print("start" + StartFrom);
         for (var i = 0; i < displayElements.Count; i++)
