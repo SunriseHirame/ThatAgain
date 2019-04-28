@@ -19,6 +19,25 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &-6215548483776769435
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Foley
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: e69eec1ba3ead9b4f93a713da9ce34e2
+  m_Children: []
+  m_Volume: 2471c67bea3697843945042225507950
+  m_Pitch: 8bb5e1c411fcdc740a087192d3a591b7
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 4856921842650005459}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -39,6 +58,7 @@ AudioMixerController:
   - guids:
     - 67f81ef60b172994aa5fd076130075ef
     - acc2d290e40df8a4ea6684acb4aa7e0e
+    - e69eec1ba3ead9b4f93a713da9ce34e2
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -53,6 +73,7 @@ AudioMixerGroupController:
   m_GroupID: 67f81ef60b172994aa5fd076130075ef
   m_Children:
   - {fileID: -8960674365225487790}
+  - {fileID: -6215548483776769435}
   m_Volume: cb4897e1d8d9ee849a5e33df46dc9099
   m_Pitch: e58ac8420614434459c52d22ae33780a
   m_Send: 00000000000000000000000000000000
@@ -97,6 +118,20 @@ AudioMixerEffectController:
   m_EffectID: 8a93da98182f8da419e2a245fecffcc0
   m_EffectName: Attenuation
   m_MixLevel: 58073959b2e28eb4ea6d1eb7e8ef1c13
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &4856921842650005459
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 1941a5c13c6ea9143907de896d22ed7c
+  m_EffectName: Attenuation
+  m_MixLevel: c9d4bcb43e1a94c42a6400cbacf9e1f5
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0

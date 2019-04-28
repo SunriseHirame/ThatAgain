@@ -3374,7 +3374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365bf90aaaba05140ba07b9c20be807d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathCanvas: {fileID: 0}
+  deathCanvas: {fileID: 2160272500879890468}
 --- !u!224 &6637993847969954943
 RectTransform:
   m_ObjectHideFlags: 0
