@@ -2143,6 +2143,7 @@ MonoBehaviour:
   Death: {fileID: 8300000, guid: bd587d41c7f538e48b1e3ecf698342c2, type: 3}
   Source: {fileID: 1208969843786562324}
   AttachedRigidbody: {fileID: 834002561238908573}
+  AttachedController: {fileID: 1087404350}
   TimeBetweenSteps: 0.1
 --- !u!1 &8143446077036119616
 GameObject:

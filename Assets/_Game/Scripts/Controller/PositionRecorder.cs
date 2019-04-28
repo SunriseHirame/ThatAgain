@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace Game
@@ -14,6 +15,9 @@ namespace Game
         [SerializeField] private PlayerData playerData;
         [SerializeField] private DeathZoom zoom;
         [SerializeField] private LayeredAudioPlayer layeredAudioPlayer;
+
+        public UnityEvent Death;
+        
         private List<Vector3> recordedPos = new List<Vector3> ();
         private Vector3 startPosition;
         private Rigidbody2D rb;

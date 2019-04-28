@@ -1,6 +1,8 @@
 ﻿using System.Runtime.CompilerServices;
+using JetBrains.Annotations;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game
 {
@@ -18,7 +20,9 @@ namespace Game
         [SerializeField] private bool allowWallJump;
         [SerializeField] private float wallJumpAngle = 30f;
         [SerializeField] private float wallJumpBoost = 1.2f;
-        
+
+
+        [NotNull] public UnityEvent Jumped;
         
         [SerializeField]
         private Rigidbody2D attachedRigidbody;
@@ -50,6 +54,8 @@ namespace Game
             if (++jumpCount > (allowAirJump ? 2 : 1))
                 return false;
 
+            Jumped.Invoke ();
+            
             if (surfaceInfo.OnGround == false && surfaceInfo.OnWall)
             {
                 print ("Wall Jump!");

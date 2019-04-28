@@ -14,12 +14,14 @@ namespace Game
         public AudioSource Source;
         public Rigidbody2D AttachedRigidbody;
 
+        public KinematicController AttachedController;
+        
         public float TimeBetweenSteps;
         private float lastStep;
         
         private void Update ()
         {
-            if (AttachedRigidbody.velocity.sqrMagnitude > 1f)
+            if (AttachedController.OnGround && AttachedRigidbody.velocity.sqrMagnitude > 1f)
             {
                 if (Time.time > lastStep + TimeBetweenSteps)
                 {
@@ -27,6 +29,16 @@ namespace Game
                     lastStep = Time.time;
                 }
             }
+        }
+
+        public void PlayJump ()
+        {
+            Source.PlayOneShot (Jump);
+        }
+        
+        public void PlayDeath ()
+        {
+            Source.PlayOneShot (Death);
         }
     }
     
